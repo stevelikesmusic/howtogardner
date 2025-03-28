@@ -1,0 +1,71 @@
+{{ define "main" }}
+<section class="home-info">
+  <div class="container">
+    <!-- Hero Section -->
+    <div class="hero-section">
+      <h1>How to Gardner</h1>
+      <p>
+        {{ .Site.Params.description }} — Sharing insights on technology, leadership, and
+        software development.
+      </p>
+      <a href="/contact/" class="contact-button">Contact</a>
+    </div>
+
+    <!-- Services Section -->
+    <div class="services-section">
+      <h2>What I Do</h2>
+      <div class="services-grid">
+        <!-- Mentoring Card -->
+        <div class="service-card">
+          <h3>Mentoring</h3>
+          <p>
+            Guiding developers and tech professionals to reach their full potential
+            through personalized coaching and knowledge sharing.
+          </p>
+        </div>
+
+        <!-- Technical Leadership Card -->
+        <div class="service-card">
+          <h3>Technical Leadership</h3>
+          <p>
+            Leading technical teams with a focus on excellence, innovation, and
+            sustainable development practices.
+          </p>
+        </div>
+
+        <!-- Fractional CTO Card -->
+        <div class="service-card">
+          <h3>Fractional CTO</h3>
+          <p>
+            Providing strategic technical guidance and leadership for businesses without
+            the need for a full-time executive.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Latest Articles Section -->
+    <div class="articles-section">
+      <h2>Latest Articles</h2>
+      <div class="articles-list">
+        {{ range first 5 (sort (where site.RegularPages "Type" "posts") "Date" "desc") }}
+        <a href="{{ .Permalink }}" class="article-card">
+          <div class="article-content">
+            <h3 class="article-title">{{ .Title }}</h3>
+            <div class="article-meta">
+              {{ .Date.Format "January 2, 2006" }} {{ if .Params.description }}
+              <p class="article-description">{{ .Params.description }}</p>
+              {{ end }}
+            </div>
+            <span class="read-more">Read More →</span>
+          </div>
+        </a>
+        {{ end }}
+      </div>
+      <div class="view-all-container">
+        <a href="/posts/" class="view-all-button">View All Articles</a>
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}
