@@ -4,6 +4,9 @@ pagination:
   pagerSize: 5
 theme: PaperMod
 
+build.environment:
+  HUGO_VERSION: 0.145.0
+
 enableRobotsTXT: true
 buildDrafts: true
 buildFuture: false
