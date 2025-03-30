@@ -2,9 +2,9 @@
 title: "About Me"
 date: 2025-03-28
 draft: false
-description: "Learn more about Steve Gardner, a technology leader and software development expert."
 layout: "single"
-showReadingTime: false
+ingTime: false
+hidemeta: true
 ---
 
 ![Steve Gardner](/images/steve-gardner-headshot.jpg)

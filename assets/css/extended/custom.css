@@ -185,26 +185,6 @@
   margin-top: 2rem;
 }
 
-/* Header styles */
-.header {
-  position: sticky;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  background-color: transparent;
-  width: 100vw;
-  margin: 0;
-  padding: 0;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Header when scrolled past hero section */
-.header.scrolled {
-  background-color: var(--theme);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
 /* Override nav width to ensure content aligns with the rest of the page */
 .nav {
   max-width: var(--main-width);
