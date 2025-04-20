@@ -2,19 +2,47 @@
 
 :root {
   --main-width: 1200px;
+  --article-width: 1000px;
+  --primary-link-color: forestgreen;
+  --secondary-link-color: saddlebrown;
+}
+
+/* Link Overrides */
+
+a {
+  color: var(--primary-link-color);
+}
+
+a:visited {
+  color: var(--secondary-link-color);
+}
+
+a:hover {
+  color: var(--primary-link-color);
+}
+
+nav a:visited {
+  color: var(--primary-link-color);
+}
+
+a.view-all-button,
+footer a:visited,
+figcaption a,
+figcaption a:visited {
+  color: var(--secondary);
 }
 
 .main {
   padding: var(--gap) calc(var(--gap) + 4rem);
 }
 
-/* Override main width for homepage */
-.home-info {
-  padding: 5rem 0;
+article.post-single {
+  max-width: var(--article-width);
 }
 
 /* Hero Section */
 .hero-section {
+  padding: 5rem 0;
   margin-bottom: 5rem;
 }
 
