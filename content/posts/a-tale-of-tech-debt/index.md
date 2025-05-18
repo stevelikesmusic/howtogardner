@@ -10,20 +10,18 @@ cover:
 ---
 In the week after Christmas 2022, a “perfect storm” of winter weather slammed U.S. airports. Every major airline except one recovered in 48 hours. The outlier was Southwest Airlines, which spiraled into a [nine‑day shutdown](https://www.reuters.com/business/aerospace-defense/southwest-airlines-agrees-140-million-penalty-over-2022-holiday-meltdown-2023-12-18/) that canceled 16,900 flights and stranded more than two million passengers nationwide. Why did one of the world’s most efficient low‑cost carriers collapse while its peers kept flying? Investigators quickly traced the root cause to SkySolver, a 1990s‑era crew‑scheduling program that had been hastily patched and extended for decades instead of being replaced.
 
-When crews were scattered by the blizzard, the system could no longer keep track of who was legally able to fly. It simply timed‑out under the load, forcing pilots and flight attendants to wait on hold for hours to be reassigned.² Without crews, Southwest’s aircraft sat idle, their manual work‑arounds failed, and cancellations cascaded across the network.
+When crews were scattered by the blizzard, the overwhelmed system could no longer keep track of who was able to fly. It simply timed‑out under the load, forcing pilots and flight attendants to call in and wait on hold for hours to be reassigned. Without crews, Southwest’s aircraft sat idle as their manual work‑arounds failed. Cancellations cascaded across the network affecting thousands of people.
 
 {{<figure align=center src="matthew-henry-MP4OSCYiGq0-unsplash.jpg" alt="A man sitting in airport terminal" caption="Photo by [Matthew Henry](https://unsplash.com/@matthewhenry?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) on [Unsplash](https://unsplash.com/photos/man-sitting-on-chair-near-glass-window-MP4OSCYiGq0?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)">}}
 
 
-The price tag on this deferred tech maintenance was brutal. Southwest’s own filings cite $725 million – $825 million in lost revenue and reimbursements. The U.S. Department of Transportation later levied a record $140 million civil penalty, bringing direct costs to more than $750 million. The monetary damage doesn’t include the reputational damage to the company. Nor does it include the ongoing $1.3 billion technology‑modernization program the airline subsequently announced.³
+The price tag on this deferred tech maintenance was brutal. Southwest’s own filings cite $725 million – $825 million in lost revenue and reimbursements. The U.S. Department of Transportation later levied a record $140 million civil penalty, bringing direct costs to more than $750 million—with total costs estimated at [over $1 billion](https://www.cbsnews.com/news/southwest-airlines-140-million-settlement-feds-december-2022-debacle/). The monetary damage doesn’t include the reputational damage to the company—Saturday Night Live had a entire sketch skewering Southwest. Nor does it include the ongoing $1.3 billion technology‑modernization program the airline subsequently [announced](https://www.bizjournals.com/losangeles/news/2023/01/30/southwest-airlines-holiday-operations-recovery.html).
 
 <!-- {{<figure align=center src="tech-debt-card.png" alt="Image of credit card getting charged">}} -->
 
-For engineering teams, the episode above is a vivid reminder that technical debt- aka tech debt-  isn’t a mere internal inconvenience. If left unchecked, it can erupt into a balance‑sheet event that wipes out years of profit overnight. Ward Cunningham, who coined the term technical debt, explained in a wiki post that tech debt it is like financial debt.
+For engineering teams, the episode above is a vivid reminder that technical debt—aka tech debt—isn’t a mere internal inconvenience. If left unchecked, it can erupt into a balance‑sheet event that wipes out years of profit overnight. Ward Cunningham, who coined the term technical debt, explained in a wiki post that tech debt it is like financial debt. Similarly, you can take technical shortcuts today-maybe to meet a tight deadline or stave off an emergency. But watch out, you will repay those tech debts with interest later. 
 
-Similarly, you can take technical shortcuts today - maybe to meet a tight deadline or stave off an emergency. But watch out, you will repay those tech debts with interest later.  
-At its core, tech-debt refers to trade-offs made in software development. 
-For instance, a team might optimize for development speed at the cost of architectural complexity. This type of strategy has short term payoffs but serious potential long term consequences. The consequences are not just the obvious kind. The payments for tech debt include hidden, systemic dysfunction, accumulating in ways even experienced teams may fail to recognize.
+At its core, tech-debt refers to trade-offs made in software development. For instance, a team might optimize for development speed at the cost of architectural complexity. This type of strategy has short term payoffs but serious potential long term consequences. The consequences are not just the obvious kind. The payments for tech debt include hidden, systemic dysfunction, accumulating in ways even experienced teams may fail to recognize. Growing companies move quickly to grow and succeed and tech debt is a high leverage way to build the business. But without constant assessment and investment, that debt can come due at crucial times the business is now unprepared for.
 
 Here are a few examples of how organizations pay for tech debt:
 
@@ -35,10 +33,17 @@ Here are a few examples of how organizations pay for tech debt:
 
 4. **Velocity (delivery) drag**: Gartner research found that teams with fast feedback loops reported 50 % less technical debt than teams where questions or code reviews lingered, linking debt reduction directly to acceleration of delivery. ([Source](https://www.gartner.com/en/publications/how-to-assess-infrastructure-technical-debt-to-prioritize-legacy-modernization-investments))
 
-These are just a few examples, but they clearly show why the slowdown your senior leadership feels in every sprint is rarely about individual performance. It is the compound interest of past shortcuts—an invisible liability that, like Southwest’s SkySolver, eventually comes due. 
+Of course, as we've seen in the Southwest example, tech debt can come due when an underinvested system built for much smaller scale becomes becomes overwhelmed when the business grows. The system that was once a competitive advantage gradually becomes a liability, suddenly costing billions of dollars to resolve. 
+
+These are just a few examples, but they clearly show why the slowdown your senior leadership feels in every sprint is rarely about individual performance. It is the compound interest of past shortcuts and decisions. It's a liability that, like Southwest’s SkySolver, eventually comes due. 
+
 At some point on a seasoned team, an engineering leader must ask:
-What are the hard truths? Where can we take steps to bring our velocity back up?
-Maybe the team is growing, the company is hiring great engineers, but somehow, shipping features is taking longer than ever.
+
+* What are the hard truths?
+* Where can we take steps to bring our velocity back up?
+* Where are our software systems overleveraged?
+  
+Maybe the team is growing and the company is hiring great engineers, but somehow, shipping features is taking longer than ever.
 
 The most likely culprit, in my experience is what I’m discussing here: technical debt. In this short series, I’ll take a brief, deep dive into three areas:
 
