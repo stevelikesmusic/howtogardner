@@ -7,38 +7,52 @@ hidemeta: true
 
 ## Hi, I'm Steve 👋
 
-I'm a technology leader with a passion for developing high-performing teams and innovative software products. With years of experience in the tech industry, I specialize in product development, mentoring developers, and providing technical leadership. I do this by serving as a fractional engineer for businesses looking to leverage technology effectively.
+I'm a technology leader with a passion for developing high-performing teams and innovative software products. With years of experience in high profile tech companies, and success in high impact roles, I specialize in product development, engineer mentoring, and technical leadership. I do this with the understanding that true leadership is service. I also provide fractional engineering to businesses seeking to leverage technology effectively.
 
 ## My Story
 
-I got my start working keys - of a saxophone. I went to school for music. After graduating with a master's degree, moved to Los Angeles to make it as a rich and famous saxophone player as we do. After a few years of freelancing, teaching, and playing in bands, I married my best friend and started thinking about family. I wanted to do something that would be more conducive to raising a family and living abroad. After doing some research, I found an article by a former DJ from San Diego that taught himself to how to code and was now making a living as a software engineer. I thought, "I can do that!" I began learning through tutorials, mini-courses, and books from the library. As I learned I'd build small projects and share them on my blog. After 14 months of learning, I landed my first job as a software engineer at Blackboard. 
+I got my start working the keys—of a saxophone. That's right, I originally went to school for music. After graduating with a master's degree, I moved to Los Angeles to make it as a rich and famous saxophone player, as we musicians do. There, I played in a band, shot a music video, and eventually met my best friend, whom I married in 2014. Getting married made me seriously consider my life. Was there a career more conducive to raising a family and living abroad than roving musicianship? Of course there was.
+
+After doing some research, I found an article by a former DJ from San Diego who taught himself to code and was happily living as a creative software engineer. I thought, "I can do that!" I began teaching myself through tutorials, mini-courses, and books from the library. Along the way, I'd build small projects and share them on my website. After 14 months of learning, I landed my first job as a software engineer at Blackboard. I am forever grateful to my first manager, who took a chance on me. 
+
+I was a junior engineer with no formal experience, but I had the drive and passion to learn. I worked hard, and my manager's leadership played a great role in my success. He demonstrated more than software development. With him, I learned to work on a team, and how to communicate with a blend of humility and confidence, how to take feedback and iterate on my work. I also learned how to be a leader, even as a junior engineer. I led stand-ups and sprint planning meetings. I took the initiative to help my colleagues with their work. I was a sponge, soaking up everything I could. I learned how to be a good engineer, and I learned how to be a good teammate.
 
 ### Growing Skills
 
-I spent the next 3 years working at few different companies. Along the way I developed expertise across a variety of technologies and programming languages. I had the opportunity to develop as a full-stack engineer at Blackboard. I went deeper on Java supporting Kroger's entry into eCommerce. At Learning Without Tears, I had the opportunity to learn more about launching 0 to 1 and building an engineering team as one of the first 3 software engineers at the company. I also had my first entry into management, leading a team of 3 contract engineers. Eventually, I had the opportunity to work at a company I had been following since I began my tech journey, Zapier.
+Over the next several years, I developed deep skills, both technically and relationally. I worked at a few different companies, each time taking on more responsibility and producing more robust outputs. I developed expertise across a variety of technologies and programming languages. I built upon the foundation of my experience as a full-stack engineer at Blackboard. 
+
+As I supported Kroger's entry into eCommerce, I dug deeper into Java. At Learning Without Tears, as one of the first 3 software engineers at the company, I helped launch a 0 to 1 product and build an engineering team. I also had my first entry into engineering management, leading a team of 3 contract engineers. Eventually, I had the opportunity to work at a company I had been following since I began my tech journey, Zapier. Zapier was a company I'd long admired for its product and culture. I was thrilled to join the team as a Frontend Engineer. There, I was able to work with excellent engineers, and I learned a lot from them. I was able to take my skills to the next level and contribute to a product that I truly believed in.
 
 ### Working Around the World
 
-Zapier is a remote-first company, and I learned to not only work remotely, but from all over the world. Within a month of starting at Zapier, my wife and I with our 1 and 3 year, began our digital nomad journey in Santa Theresa, Costa Rica. At Zapier, I built out the new UI for Zapier's Developer Platform, allowing companies to more easily integrate their products with Zapier. It was big learning experience joining Zapier at 100 people and growing to over 500 people. I learned a lot about scaling teams, processes, and products. During this time, my family and I slow-traveled through:
+Zapier was my first remote-first company. This changed my life in many ways. I learned to work remotely, not just from the United States but from all over the world. Within a month of starting at Zapier, my wife and I packed up the house and our 1 and 3 year olds, and traveled to Santa Theresa, Costa Rica as digital nomads. 
+
+Working remotely, I began to think differently about building relationships in the virtual office. My work as a musician, where I actively listened to blend the sound of my saxophone with many other instruments, served me well. I realized that consistent collaboration in remote tech requires deliberately listening to and blending multiple perspectives in product building. 
+
+At Zapier, I built out the new UI for Zapier's Developer Platform, allowing companies to more easily integrate their products with Zapier.  I made a point to constantly seek my colleagues' contexts. It was quite the task: During this time, Zapier grew from 100 employees to over 500 people. I discovered how to scale teams, processes, and products. 
+
+During this time, my family and I slow-traveled through:
 
 - Costa Rica (Santa Teresa, Trinidad de Dota, Escazu)
-- Canada (Toronto)
+- Toronto, Canada
 - New Zealand (Wellington area)
-- Australia (Melbourne)
+- Melbourne, Australia
 - Indio, California
-- US Virgin Islands (St. Thomas)
+- US Virgin Islands (Water Island, St. Thomas)
 
 ### Growing Food Too
 
-In 2022 we moved back to the US for two big changes. I began working at Netflix as a Senior Software Engineer and we bought a 3 acres outside of Atlanta that we developed into a small working permaculture farm. My 3 years at Netflix were a great experience. I moved across 3 different teams from enterprise software, to Privacy Engineering, and finally on the streaming side where I tackled tech-debt across the company while supporting the Edge APIs that powered 70% of Netflix's traffic.
+In 2022 we moved back to the US for two big changes. I began working at Netflix as a Senior Software Engineer and we bought a house situated on 3 barren acres outside of Atlanta. Over time, we developed our rocky soil into a lush green oasis using permaculture techniques. At the same time, my 3 years at Netflix were a great experience. I moved across 3 different teams—from enterprise software, to Privacy Engineering, and finally over to the streaming side. There I tackled tech-debt across the company while supporting the Edge APIs that powered 70% of Netflix's traffic. I learned a lot about building scalable distributed systems, working with a multitude of diverse teams, and navigating the complexities of a large organization. I also had the opportunity to work with some of the most stunning colleagues in the industry.
 
-On the farm, my wife Adina led the design and implementation of our permaculture farm. We planted over 40 fruit trees, berry bushes, and nut trees. We grew a variety of vegetables, herbs, and wild flowers. We also kept a small flock of laying hens and four Nigerian dwarf goats. I built a mobile chicken coop that where we practiced free ranging our hens. We learned a lot about growing food, permaculture, and soil development. Adina transformed solid Georgia clay into rich, loamy soil. 
+On the farm, my wife Adina led the design and implementation of our permaculture farm. We planted over 40 fruit trees, berry bushes, and nut trees. We grew a variety of vegetables, herbs, and wild flowers. We also kept a small flock of laying hens and four Nigerian dwarf goats. I tried my hand at a new skill—carpentry! Using the blueprint out of a book, I built a mobile chicken coop that I used to free range our hens. We became knowledgable about growing food, permaculture, and soil development. Adina transformed our solid Georgia clay into rich, loamy soil. 
 
 ## How I Work
 
 ### Product Thinking
 
-I'm a full-stack engineer focussing on products. Although I started out in UI, I don't necessarily prefer any part of the stack over the other. For me, it's having the end-to-end context of the product to make the best decisions. I thrive having conversations about how to make the product better, and then implementing those changes wherever they are needed. I'm a life-long learner and very curious. This means I tend to ask a lot of questions. I love to learn about the business, the users, and the technology. I believe that understanding the "why" behind a product is just as important as the "how".
+I'm a full-stack engineer who focuses on the product as a whole. Although I started out in UI, I don't prefer any part of the stack over the other. For me, effective engineering means developing the end-to-end context of the product, and seating that in an understanding of trends and data. This type of broad context enables evidence-based decision-making. As I gain context, I pursue the conversations and data necessary to highlight product areas amenable to improvement. I ask questions, learn, and then build. 
+
+Often, I aggregate all the conversations into an easily accessible document, then develop a prototype solution that colleagues can test and provide feedback on. It's all part of the implementation process. Bottom line—I'm a life-long learner and very curious. I bring this curiosity into my product thinking. I love to learn about the business, the customers, and the technology. Understanding the "why" behind a product is just as important as the "how".
 
 ### Remote Work
 
@@ -56,14 +70,10 @@ All of this is to build trust. I believe that trust is the foundation of any suc
 
 I've been passionate about mentoring and education since I was a musician teaching saxophone lessons. I love helping others grow and develop their skills. I've had the opportunity to mentor many developers, both formally and informally, and I find it incredibly rewarding. I find opportunities to mentor in every role I've had. This includes 1:1 mentoring as well as group presentations. I love to share my knowledge and experience with others, and I'm always looking for ways to help others grow. A couple friends started a non-profit called The Collab Lab, that I helped with in its first few years. While it existed, we coached cohorts of early career engineers coming from non-traditional backgrounds in working on a remote team.
 
-## Timeline
-
-
-
 ## Let's Work Together 🤝
 
 I'm always interested in connecting with fellow technology professionals, potential clients, or anyone passionate about leveraging technology to solve meaningful problems.
 
-Feel free to [contact me](/contact/) to discuss potential collaborations, mentoring opportunities, or just to chat about technology trends.
+Feel free to [contact me](mailto:steve@howtogardner.com) to discuss potential collaborations, mentoring opportunities, or just to chat about building.
 
 For more details about my professional background, you can find me on [LinkedIn](https://linkedin.com/in/gardnersj).
