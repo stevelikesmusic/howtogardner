@@ -7,7 +7,6 @@ import { NewsletterSignup } from "@/components/newsletter-signup";
 import { getPostBySlug, getAllPostSlugs } from "@/lib/blog";
 import { notFound } from "next/navigation";
 
-// Add generateStaticParams for static generation
 export async function generateStaticParams() {
   const slugs = await getAllPostSlugs();
   return slugs.map((slug) => ({
@@ -16,8 +15,13 @@ export async function generateStaticParams() {
 }
 
 // Update the component to be async and load data dynamically
-export default async function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = await getPostBySlug(params.slug);
+export default async function BlogPostPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const post = await getPostBySlug(slug);
 
   if (!post) {
     notFound();
