@@ -21,7 +21,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Mail, Phone, MapPin, Clock } from "lucide-react";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -59,9 +58,9 @@ export default function ContactPage() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-12">
+        <div className="flex justify-center mb-12">
           {/* Contact Form */}
-          <div className="lg:col-span-2">
+          <div className="center">
             <Card className="border-slate-200">
               <CardHeader>
                 <CardTitle>Start a Conversation</CardTitle>
@@ -180,71 +179,6 @@ export default function ContactPage() {
                     Send Message
                   </Button>
                 </form>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Contact Information */}
-          <div className="space-y-8">
-            <Card className="border-slate-200">
-              <CardHeader>
-                <CardTitle>Contact Information</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <Mail className="h-5 w-5 text-green-600" />
-                  <div>
-                    <p className="font-medium">Email</p>
-                    <p className="text-slate-600">hello@example.com</p>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <Phone className="h-5 w-5 text-green-600" />
-                  <div>
-                    <p className="font-medium">Phone</p>
-                    <p className="text-slate-600">+1 (555) 123-4567</p>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <MapPin className="h-5 w-5 text-green-600" />
-                  <div>
-                    <p className="font-medium">Location</p>
-                    <p className="text-slate-600">San Francisco, CA</p>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <Clock className="h-5 w-5 text-green-600" />
-                  <div>
-                    <p className="font-medium">Response Time</p>
-                    <p className="text-slate-600">Within 24 hours</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-slate-200">
-              <CardHeader>
-                <CardTitle>Schedule a Call</CardTitle>
-                <CardDescription>
-                  Prefer to talk? Schedule a free 30-minute consultation call.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Button variant="outline" className="w-full">
-                  Book a Call
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="border-slate-200 bg-green-50">
-              <CardHeader>
-                <CardTitle>Quick Response Guarantee</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-slate-600">
-                  I respond to all inquiries within 24 hours. For urgent matters, please
-                  call directly or mention “URGENT” in your message subject.
-                </p>
               </CardContent>
             </Card>
           </div>

@@ -24,7 +24,7 @@ export function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <div className="h-8 w-8 bg-green-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">JS</span>
+              <span className="text-white font-bold text-sm">SG</span>
             </div>
             <span className="font-bold text-xl text-slate-900">How to Gardner</span>
           </Link>

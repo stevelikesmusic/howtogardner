@@ -1,7 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Mail, Linkedin } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 export default function AboutPage() {
   return (
@@ -12,7 +10,7 @@ export default function AboutPage() {
           <div className="lg:w-1/3">
             <div className="relative">
               <Image
-                src="images/SteveHeadshot.jpeg?height=400&width=400"
+                src="images/SteveHeadshot.jpeg"
                 alt="Steve Gardner - Professional headshot"
                 width={400}
                 height={400}
@@ -280,26 +278,6 @@ export default function AboutPage() {
             </Link>
             .
           </p>
-
-          {/* Contact Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 mt-12">
-            <Button asChild>
-              <Link href="mailto:steve@howtogardner.com">
-                <Mail className="mr-2 h-4 w-4" />
-                Send Email
-              </Link>
-            </Button>
-            <Button variant="outline" asChild>
-              <Link
-                href="https://linkedin.com/in/gardnersj"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Linkedin className="mr-2 h-4 w-4" />
-                Connect on LinkedIn
-              </Link>
-            </Button>
-          </div>
         </div>
       </div>
     </div>
