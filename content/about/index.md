@@ -2,8 +2,6 @@
 title: "About Me"
 date: 2025-03-28
 draft: false
-layout: "single"
-ingTime: false
 hidemeta: true
 ---
 

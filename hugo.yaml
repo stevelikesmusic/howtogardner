@@ -23,15 +23,13 @@ params:
   title: How to Gardner
   description: "The personal website of Steve Gardner"
   keywords: [Blog, Portfolio, PaperMod]
-  author: Steve Gardner
-  # author: ["Me", "You"] # multiple authors
   images: ["<link or path of image for opengraph, twitter-cards>"]
   DateFormat: "January 2, 2006"
   defaultTheme: auto # dark, light
   disableThemeToggle: false
 
-  ShowReadingTime: true
-  ShowShareButtons: true
+  ShowReadingTime: false
+  ShowShareButtons: false
   ShowPostNavLinks: true
   ShowBreadCrumbs: false
   ShowCodeCopyButtons: false
@@ -39,7 +37,7 @@ params:
   ShowRssButtonInSectionTermList: false
   UseHugoToc: true
   disableSpecial1stPost: true
-  disableScrollToTop: false
+  disableScrollToTop: true
   comments: false
   hidemeta: false
   hideSummary: false
@@ -97,9 +95,9 @@ params:
       SiteVerificationTag: "XYZabc"
 
   cover:
-    hidden: true # hide everywhere but not in structured data
+    hidden: false # hide everywhere but not in structured data
     hiddenInList: true # hide on list pages and home
-    hiddenInSingle: true # hide on single page
+    hiddenInSingle: false # hide on single page
 
   # for search
   # https://fusejs.io/api/options.html
@@ -125,6 +123,15 @@ menu:
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 pygmentsUseClasses: true
 markup:
+  goldmark:
+    renderer:
+      unsafe: true
+    extensions:
+      extras:
+        subscript:
+          enable: true
+        superscript:
+          enable: true
   highlight:
     noClasses: false
     # anchorLineNos: true
