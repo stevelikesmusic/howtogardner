@@ -1,11 +1,11 @@
-import Link from "next/link";
-import { ArrowLeft, Calendar, Clock } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
-import { NewsletterSignup } from "@/components/newsletter-signup";
-import { getPostBySlug, getAllPostSlugs } from "@/lib/blog";
-import { notFound } from "next/navigation";
+import Link from 'next/link';
+import { ArrowLeft, Calendar } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Separator } from '@/components/ui/separator';
+import { NewsletterSignup } from '@/components/newsletter-signup';
+import { getAllPostSlugs } from '@/lib/blog';
+import { notFound } from 'next/navigation';
 
 export async function generateStaticParams() {
   const slugs = await getAllPostSlugs();
@@ -21,9 +21,9 @@ export default async function BlogPostPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = await getPostBySlug(slug);
+  const { default: Article, metadata } = await import(`@/articles/${slug}/index.mdx`);
 
-  if (!post) {
+  if (!Article || !metadata) {
     notFound();
   }
 
@@ -43,29 +43,25 @@ export default async function BlogPostPage({
         {/* Article Header */}
         <header className="mb-12">
           <div className="mb-4">
-            <Badge variant="secondary">{post.tags[0]}</Badge>
+            <Badge variant="secondary">{metadata.tags?.[0]}</Badge>
           </div>
 
           <h1 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-            {post.title}
+            {metadata.title}
           </h1>
 
-          <p className="text-xl text-slate-600 mb-8">{post.excerpt}</p>
+          <p className="text-xl text-slate-600 mb-8">{metadata.excerpt}</p>
 
           <div className="flex items-center gap-6 text-sm text-slate-500">
             <div className="flex items-center gap-2">
               <Calendar className="h-4 w-4" />
               <span>
-                {new Date(post.date).toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
+                {new Date(metadata.date).toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
                 })}
               </span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Clock className="h-4 w-4" />
-              <span>{post.readTime}</span>
             </div>
           </div>
         </header>
@@ -74,10 +70,7 @@ export default async function BlogPostPage({
 
         {/* Article Content */}
         <article className="prose prose-slate max-w-none mb-16">
-          <div
-            dangerouslySetInnerHTML={{ __html: post.content }}
-            className="space-y-6 text-slate-700 leading-relaxed"
-          />
+          <Article />
         </article>
 
         <Separator className="mb-12" />

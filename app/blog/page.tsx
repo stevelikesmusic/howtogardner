@@ -1,14 +1,13 @@
-import Link from "next/link";
+import Link from 'next/link';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { NewsletterSignup } from "@/components/newsletter-signup";
-import { getAllPosts } from "@/lib/blog";
+} from '@/components/ui/card';
+import { NewsletterSignup } from '@/components/newsletter-signup';
+import { getAllPosts } from '@/lib/blog';
 
 export default async function BlogPage() {
   const blogPosts = await getAllPosts();
@@ -37,10 +36,6 @@ export default async function BlogPage() {
                 className="border-slate-200 hover:shadow-lg transition-shadow"
               >
                 <CardHeader>
-                  <div className="flex items-center justify-between mb-2">
-                    <Badge variant="outline">{post.tags[0]}</Badge>
-                    <span className="text-sm text-slate-500">{post.readTime}</span>
-                  </div>
                   <CardTitle className="text-lg hover:text-green-600 transition-colors">
                     <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                   </CardTitle>

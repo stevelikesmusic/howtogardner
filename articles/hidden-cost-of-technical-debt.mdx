@@ -1,14 +1,14 @@
----
-date: '2025-03-26T14:28:29Z'
-draft: true
-title: 'The Hidden Cost of Technical Debt'
-Description: 'What CTOs and Engineers Overlook and How to Address It'
-cover:
-    image: "/images/overgrown-plane.jpg"
-    alt: "Airplane overgrown with grass in a green landscape" 
-    caption: "“Natural Aesthetics by Marco Verch" 
-    
----
+export const metadata = {
+  date: "2025-03-26T14:28:29Z",
+  draft: true,
+  title: "The Hidden Cost of Technical Debt",
+  Description: "What CTOs and Engineers Overlook and How to Address It",
+  cover: {
+    image: "/images/overgrown-plane.jpg",
+    alt: "Airplane overgrown with grass in a green landscape",
+    caption: "“Natural Aesthetics by Marco Verch",
+  },
+};
 
 At some point on a seasoned team, an engineering leader has asked:
 
@@ -18,11 +18,11 @@ The team is growing, we’re hiring great engineers, but somehow, shipping featu
 
 The likely culprit? In my experience, **technical debt.** What exactly is technical debt (aka tech-debt)? The term can mean different things to different people.
 
-At its core, tech-debt refers to the trade-offs made in software development. For instance, a team might optimize for development speed at the cost of architectural complexity. Such a decision exemplifies a strategy with short term payoffs but potential long term consequences. [Ward Cunningham](https://en.wikipedia.org/wiki/Ward_Cunningham), who coined the term technical debt, [explained it in a wiki post](https://wiki.c2.com/?TechnicalDebt). Taking shortcuts mentioned earlier is like borrowing money. You can borrow money today but you will have to repay it with interest later. Similarly, you can take technical shortcuts today but you may need to repay those tech debt with interest later.  
+At its core, tech-debt refers to the trade-offs made in software development. For instance, a team might optimize for development speed at the cost of architectural complexity. Such a decision exemplifies a strategy with short term payoffs but potential long term consequences. [Ward Cunningham](https://en.wikipedia.org/wiki/Ward_Cunningham), who coined the term technical debt, [explained it in a wiki post](https://wiki.c2.com/?TechnicalDebt). Taking shortcuts mentioned earlier is like borrowing money. You can borrow money today but you will have to repay it with interest later. Similarly, you can take technical shortcuts today but you may need to repay those tech debt with interest later.
 
 It's not just the obvious kind. The hidden, systemic debt that accumulates in ways even experienced teams fail to recognize. In fact, software behaves like many a dynamic system. It's constantly changing—both within the system itself and the world around that system. Without constant investment, the system decays towards [entropy](https://en.wikipedia.org/wiki/Entropy).
 
-In many ways, technical debt is an inevitable consequence of the Software Development Life Cycle. Just as entropy increases in a system unless deliberate energy is applied, technical debt (aka software entropy) naturally accumulates unless actively managed. 
+In many ways, technical debt is an inevitable consequence of the Software Development Life Cycle. Just as entropy increases in a system unless deliberate energy is applied, technical debt (aka software entropy) naturally accumulates unless actively managed.
 
 How does this type of debt affect the business? Let me give some examples of what I've encountered throughout my career—maybe you'll recognize some:
 
@@ -32,7 +32,7 @@ How does this type of debt affect the business? Let me give some examples of wha
 - Growing areas of the codebase are known as dangerous with fewer engineers willing to touch it
 - A legacy service thought to be inconsequential creates an outsized incident when it fails
 
-Left unchecked, this entropy becomes both an anchor to product innovation and a risk to the business. The key is **continuous investment** to intentionally keep software entropy manageable. 
+Left unchecked, this entropy becomes both an anchor to product innovation and a risk to the business. The key is **continuous investment** to intentionally keep software entropy manageable.
 
 ## It’s Not Just About Code
 
@@ -52,7 +52,7 @@ The obvious areas of tech-debt are those notorious sprawling routines that span 
 1. **Misaligned Architecture Decisions** – These are early choices that were “good enough”, but don’t scale with business growth and current needs. This is common in assumptions made early on that no longer suit the current product direction.
 2. **Tooling & Process Debt** – This debt often manifests in slow CI/CD pipelines, inefficient testing, or outdated developer environments. It creates a bottleneck on the developer experience, as well as the time it takes for a feature to ship to production.
 3. **Knowledge Deficits** – When tribal knowledge isn’t documented, new engineers can unknowingly reinforce bad patterns. Adjacently, as teams change, primary contributors may no longer be on the project—or even at the company. This often creates a fear of change where engineers avoid touching code they don't understand.
-4. **Short-term Business Goals** – Who cares about tech-debt if we don't have customers? It's sometimes necessary to move at lightning speed, especially when you're building 0 to 1. The problem is when there isn't a follow through to address those short-term decisions. I've seen this manifest in new features being built using mostly-migrated platforms because they "just work". 
+4. **Short-term Business Goals** – Who cares about tech-debt if we don't have customers? It's sometimes necessary to move at lightning speed, especially when you're building 0 to 1. The problem is when there isn't a follow through to address those short-term decisions. I've seen this manifest in new features being built using mostly-migrated platforms because they "just work".
 
 Any of these sound familiar?
 
@@ -70,11 +70,10 @@ Technical debt isn’t just an engineering problem—it’s a business problem. 
 
 ✔️ **Encourage a Culture of Refactoring** – Reward teams for proactive maintenance—not just new feature delivery. Broadly share and celebrate tech-debt wins. The more visible the work, the more it will become part of your engineering culture. Reward the behaviors you want in your culture. Periodically revisit architecture decisions and change where appropriate.
 
-Business demands often prioritize new features that deliver more potential immediate revenue. Constant intentional investments in reducing software entropy enable  new revenue generating features to be built. Those investments release the future from the anchors of the past allowing the business' capabilities to evolve. 
+Business demands often prioritize new features that deliver more potential immediate revenue. Constant intentional investments in reducing software entropy enable new revenue generating features to be built. Those investments release the future from the anchors of the past allowing the business' capabilities to evolve.
 
-Pinpoint your tech debt. Plan and prioritize its investment. Then publicly praise your teams for reducing the inevitable software entropy. 
+Pinpoint your tech debt. Plan and prioritize its investment. Then publicly praise your teams for reducing the inevitable software entropy.
 
 ## How Do You Manage Technical Debt?
 
 No software escapes entropy and no company is immune to technical debt. Some handle it better than others. **What strategies have helped your team reduce technical debt while maintaining speed?** Drop your insights in the comments! 👇
-
