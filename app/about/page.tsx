@@ -257,7 +257,7 @@ export default function AboutPage() {
           <p className="text-slate-700 leading-relaxed mb-8">
             Feel free to{" "}
             <Link
-              href="mailto:steve@howtogardner.com"
+              href="mailto:info@howtogardner.com"
               className="text-green-600 hover:text-green-700 underline"
             >
               contact me
