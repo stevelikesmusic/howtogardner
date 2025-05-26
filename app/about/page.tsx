@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import Story from "./story.mdx";
 
 export default function AboutPage() {
   return (
@@ -33,9 +34,9 @@ export default function AboutPage() {
             </p>
           </div>
         </div>
-
+        <Story />
         {/* Main Content */}
-        <div className="prose prose-slate max-w-none">
+        {/* <div className="prose prose-slate max-w-none">
           <h2 className="text-3xl font-bold text-slate-900 mb-6">My Story</h2>
 
           <p className="text-slate-700 leading-relaxed mb-6">
@@ -278,7 +279,7 @@ export default function AboutPage() {
             </Link>
             .
           </p>
-        </div>
+        </div> */}
       </div>
     </div>
   );
