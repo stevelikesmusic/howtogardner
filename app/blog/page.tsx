@@ -5,6 +5,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
+  CardFooter,
 } from '@/components/ui/card';
 import { NewsletterSignup } from '@/components/newsletter-signup';
 import { getAllPosts } from '@/lib/blog';
@@ -33,25 +34,29 @@ export default async function BlogPage() {
             {blogPosts.map((post) => (
               <Card
                 key={post.slug}
-                className="border-slate-200 hover:shadow-lg transition-shadow"
+                className="group border-slate-200 hover:shadow-lg transition-shadow justify-between"
               >
                 <CardHeader>
-                  <CardTitle className="text-lg hover:text-green-600 transition-colors">
-                    <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                  <CardTitle className="text-lg group-hover:text-green-600 transition-colors">
+                    {post.title}
                   </CardTitle>
-                  <CardDescription>{post.excerpt}</CardDescription>
+                  <CardDescription>
+                    {new Date(post.date).toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                    })}
+                  </CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-slate-500">{post.date}</span>
-                    <Link
-                      href={`/blog/${post.slug}`}
-                      className="text-green-600 hover:text-green-700 font-medium text-sm"
-                    >
-                      Read more →
-                    </Link>
-                  </div>
-                </CardContent>
+                <CardContent>{post.excerpt}</CardContent>
+                <CardFooter className="pt-0">
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className="text-green-600 hover:text-green-700 font-medium"
+                  >
+                    Read more →
+                  </Link>
+                </CardFooter>
               </Card>
             ))}
           </div>
