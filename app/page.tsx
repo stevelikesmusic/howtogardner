@@ -1,16 +1,16 @@
-import Link from "next/link";
-import { ArrowRight, CheckCircle, Users, Zap, Shield } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import Link from 'next/link';
+import { ArrowRight, CheckCircle, Users, Zap, Shield } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { NewsletterSignup } from "@/components/newsletter-signup";
-import { getAllPosts } from "@/lib/blog";
-import { COMMON_CTA } from "@/lib/constants";
+} from '@/components/ui/card';
+import { NewsletterSignup } from '@/components/newsletter-signup';
+import { getAllPosts } from '@/lib/blog';
+import { COMMON_CTA } from '@/lib/constants';
 
 export default async function HomePage() {
   const allPosts = await getAllPosts();
@@ -161,10 +161,10 @@ export default async function HomePage() {
                 <CardHeader>
                   <CardTitle className="text-lg">{post.title}</CardTitle>
                   <CardDescription>
-                    {new Date(post.date).toLocaleDateString("en-US", {
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
+                    {new Date(post.date).toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
                     })}
                   </CardDescription>
                 </CardHeader>
