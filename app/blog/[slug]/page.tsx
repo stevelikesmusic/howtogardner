@@ -1,6 +1,4 @@
-import Link from 'next/link';
-import { ArrowLeft, Calendar } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Calendar } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { NewsletterSignup } from '@/components/newsletter-signup';
@@ -30,18 +28,8 @@ export default async function BlogPostPage({
   return (
     <div className="container mx-auto px-4 py-12">
       <div className="max-w-4xl mx-auto">
-        {/* Back Button */}
-        <div className="mb-8">
-          <Button variant="ghost" asChild>
-            <Link href="/blog">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Blog
-            </Link>
-          </Button>
-        </div>
-
         {/* Article Header */}
-        <header className="mb-12">
+        <header className="mb-6">
           <div className="mb-4">
             <Badge variant="secondary">{metadata.tags?.[0]}</Badge>
           </div>
@@ -69,11 +57,9 @@ export default async function BlogPostPage({
         <Separator className="mb-12" />
 
         {/* Article Content */}
-        <article className="prose prose-slate max-w-none mb-16">
+        <article className="prose prose-lg max-w-prose mx-auto leading-relaxed tracking-normal text-gray-800 mb-16">
           <Article />
         </article>
-
-        <Separator className="mb-12" />
 
         {/* Newsletter Signup */}
         <div className="bg-slate-50 rounded-lg p-8 text-center mb-12">

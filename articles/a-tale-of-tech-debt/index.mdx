@@ -1,6 +1,8 @@
 import airportTerminalPhoto from './matthew-henry-MP4OSCYiGq0-unsplash.jpg';
+import techDebtCard from './tech-debt-card.png';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Figure } from '@/components/ui/figure';
 
 export const metadata = {
   date: '2025-04-20T16:26:42+01:00',
@@ -19,28 +21,34 @@ In the week after Christmas 2022, a “perfect storm” of winter weather slamme
 
 When crews were scattered by the blizzard, the overwhelmed system could no longer keep track of who was able to fly. It simply timed‑out under the load, forcing pilots and flight attendants to call in and wait on hold for hours to be reassigned. Without crews, Southwest’s aircraft sat idle as their manual work‑arounds failed. Cancellations cascaded across the network affecting thousands of people.
 
-<figure>
+<Figure
+  caption={
+    <>
+      Photo by{' '}
+      <Link
+        className="underline"
+        href="https://unsplash.com/@matthewhenry?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
+      >
+        Matthew Henry
+      </Link>{' '}
+      on{' '}
+      <Link
+        className="underline"
+        href="https://unsplash.com/photos/man-sitting-on-chair-near-glass-window-MP4OSCYiGq0?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
+      >
+        Unsplash
+      </Link>
+    </>
+  }
+>
   <Image src={airportTerminalPhoto} alt="A man sitting in airport terminal" />
-  <figcaption>
-    This is a decent caption
-  </figcaption>
-
-</figure>
-
-<figure
-  align="center"
-  src="matthew-henry-MP4OSCYiGq0-unsplash.jpg"
-  alt="A man sitting in airport terminal"
-  caption="Photo by [Matthew Henry](https://unsplash.com/@matthewhenry?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) on [Unsplash](https://unsplash.com/photos/man-sitting-on-chair-near-glass-window-MP4OSCYiGq0?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)"
-></figure>
+</Figure>
 
 The price tag on this deferred tech maintenance was brutal. Southwest’s own filings cite $725 million – $825 million in lost revenue and reimbursements. The U.S. Department of Transportation later levied a record $140 million civil penalty, bringing direct costs to more than $750 million—with total costs estimated at [over $1 billion](https://www.cbsnews.com/news/southwest-airlines-140-million-settlement-feds-december-2022-debacle/). The monetary damage doesn’t include the reputational damage to the company—Saturday Night Live had a entire sketch skewering Southwest. Nor does it include the ongoing $1.3 billion technology‑modernization program the airline subsequently [announced](https://www.bizjournals.com/losangeles/news/2023/01/30/southwest-airlines-holiday-operations-recovery.html).
 
-<figure
-  align="center"
-  src="tech-debt-card.png"
-  alt="Image of credit card getting charged"
-></figure>
+<Figure>
+  <Image src={techDebtCard} alt="Image of credit card getting charged" />
+</Figure>
 
 For engineering teams, the episode above is a vivid reminder that technical debt—aka tech debt—isn’t a mere internal inconvenience. If left unchecked, it can erupt into a balance‑sheet event that wipes out years of profit overnight. Ward Cunningham, who coined the term technical debt, explained in a wiki post that tech debt it is like financial debt. Similarly, you can take technical shortcuts today-maybe to meet a tight deadline or stave off an emergency. But watch out, you will repay those tech debts with interest later.
 

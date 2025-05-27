@@ -1,54 +1,54 @@
-import type { MDXComponents } from "mdx/types";
-import Image, { type ImageProps } from "next/image";
-import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
+import type { MDXComponents } from 'mdx/types';
+import Image, { type ImageProps } from 'next/image';
+import Link from 'next/link';
+import { Badge } from '@/components/ui/badge';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from '@/components/ui/card';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     // Headings
-    h1: ({ children }) => (
-      <h1 className="text-4xl font-bold text-slate-900 mb-6 mt-8 first:mt-0">
-        {children}
-      </h1>
-    ),
-    h2: ({ children }) => (
-      <h2 className="text-3xl font-bold text-slate-900 mb-6">{children}</h2>
-    ),
-    h3: ({ children }) => (
-      <h3 className="text-2xl font-semibold text-slate-900 mb-4">{children}</h3>
-    ),
-    h4: ({ children }) => (
-      <h4 className="text-xl font-semibold text-slate-900 mb-2 mt-4">{children}</h4>
-    ),
+    // h1: ({ children }) => (
+    //   <h1 className="text-4xl font-bold text-slate-900 mb-6 mt-8 first:mt-0">
+    //     {children}
+    //   </h1>
+    // ),
+    // h2: ({ children }) => (
+    //   <h2 className="text-3xl font-bold text-slate-900 mb-6">{children}</h2>
+    // ),
+    // h3: ({ children }) => (
+    //   <h3 className="text-2xl font-semibold text-slate-900 mb-4">{children}</h3>
+    // ),
+    // h4: ({ children }) => (
+    //   <h4 className="text-xl font-semibold text-slate-900 mb-2 mt-4">{children}</h4>
+    // ),
 
-    // Paragraphs and text
-    p: ({ children }) => (
-      <p className="text-slate-700 leading-relaxed mb-6">{children}</p>
-    ),
+    // // Paragraphs and text
+    // p: ({ children }) => (
+    //   <p className="text-slate-700 leading-relaxed mb-6">{children}</p>
+    // ),
 
-    // Lists
-    ul: ({ children }) => (
-      <ul className="list-disc list-inside text-slate-700 mb-8 space-y-1">{children}</ul>
-    ),
-    ol: ({ children }) => (
-      <ol className="list-decimal list-inside text-slate-700 mb-4 space-y-1">
-        {children}
-      </ol>
-    ),
-    li: ({ children }) => <li className="ml-4">{children}</li>,
+    // // Lists
+    // ul: ({ children }) => (
+    //   <ul className="list-disc list-inside text-slate-700 mb-8 space-y-1">{children}</ul>
+    // ),
+    // ol: ({ children }) => (
+    //   <ol className="list-decimal list-inside text-slate-700 mb-4 space-y-1">
+    //     {children}
+    //   </ol>
+    // ),
+    // li: ({ children }) => <li className="ml-4">{children}</li>,
 
     // Links
     // How to properly link?
     a: ({ href, children }) => (
       <Link
-        href={href || "#"}
+        href={href || '#'}
         className="text-green-600 hover:text-green-700 underline font-medium"
       >
         {children}
@@ -59,7 +59,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     img: (props) => (
       <Image
         sizes="100vw"
-        style={{ width: "100%", height: "auto" }}
+        style={{ width: '100%', height: 'auto' }}
         className="rounded-lg my-6"
         width={props.width || 800}
         height={props.height || 600}
