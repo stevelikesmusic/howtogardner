@@ -1,14 +1,6 @@
-import Link from 'next/link';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-  CardFooter,
-} from '@/components/ui/card';
 import { NewsletterSignup } from '@/components/newsletter-signup';
 import { getAllPosts } from '@/lib/blog';
+import { ArticleSummaryCard } from '@/components/ArticleSummaryCard';
 
 export default async function BlogPage() {
   const blogPosts = await getAllPosts();
@@ -30,34 +22,15 @@ export default async function BlogPage() {
         {/* All Posts */}
         <div className="mb-16">
           <h2 className="text-2xl font-bold text-slate-900 mb-6">All Articles</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8">
             {blogPosts.map((post) => (
-              <Card
+              <ArticleSummaryCard
                 key={post.slug}
-                className="group border-slate-200 hover:shadow-lg transition-shadow justify-between"
-              >
-                <CardHeader>
-                  <CardTitle className="text-lg group-hover:text-green-600 transition-colors">
-                    {post.title}
-                  </CardTitle>
-                  <CardDescription>
-                    {new Date(post.date).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric',
-                    })}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>{post.excerpt}</CardContent>
-                <CardFooter className="pt-0">
-                  <Link
-                    href={`/blog/${post.slug}`}
-                    className="text-green-600 hover:text-green-700 font-medium"
-                  >
-                    Read more →
-                  </Link>
-                </CardFooter>
-              </Card>
+                slug={post.slug}
+                title={post.title}
+                excerpt={post.excerpt}
+                date={post.date}
+              />
             ))}
           </div>
         </div>

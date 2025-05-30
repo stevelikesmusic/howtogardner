@@ -11,6 +11,7 @@ import {
 import { NewsletterSignup } from '@/components/newsletter-signup';
 import { getAllPosts } from '@/lib/blog';
 import { COMMON_CTA } from '@/lib/constants';
+import { ArticleSummaryCard } from '@/components/ArticleSummaryCard';
 
 export default async function HomePage() {
   const allPosts = await getAllPosts();
@@ -157,27 +158,13 @@ export default async function HomePage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {latestPosts.map((post) => (
-              <Card key={post.slug} className="bg-white border-slate-200">
-                <CardHeader>
-                  <CardTitle className="text-lg">{post.title}</CardTitle>
-                  <CardDescription>
-                    {new Date(post.date).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric',
-                    })}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-slate-600 mb-4">{post.excerpt}</p>
-                  <Link
-                    href={`/blog/${post.slug}`}
-                    className="text-green-600 hover:text-green-700 font-medium"
-                  >
-                    Read more →
-                  </Link>
-                </CardContent>
-              </Card>
+              <ArticleSummaryCard
+                key={post.slug}
+                slug={post.slug}
+                title={post.title}
+                excerpt={post.excerpt}
+                date={post.date}
+              />
             ))}
           </div>
 
