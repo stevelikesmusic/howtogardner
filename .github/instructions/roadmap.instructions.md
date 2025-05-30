@@ -11,3 +11,6 @@ applyTo: '**'
 5. [ ] Add some DX tools like husky and lint-staged with prettier
 6. [ ] Fine tune eslint lint rules
 7. [ ] Use tailwind config for themes and common values
+8. [ ] Filter draft blog posts
+9. [ ] Link headings in blog posts
+10. [ ] Add custom link for MDX

@@ -38,7 +38,7 @@ export default async function BlogPostPage({
             {metadata.title}
           </h1>
 
-          <p className="text-xl text-slate-600 mb-8">{metadata.excerpt}</p>
+          <p className="text-xl text-slate-500 mb-8">{metadata.excerpt}</p>
 
           <div className="flex items-center gap-6 text-sm text-slate-500">
             <div className="flex items-center gap-2">
@@ -57,7 +57,7 @@ export default async function BlogPostPage({
         <Separator className="mb-12" />
 
         {/* Article Content */}
-        <article className="prose prose-lg max-w-prose mx-auto leading-relaxed tracking-normal text-gray-800 mb-16">
+        <article className="prose prose-lg prose-slate max-w-prose mx-auto mb-16">
           <Article />
         </article>
 

@@ -14,16 +14,14 @@ export default function AboutPage() {
                 alt="Steve Gardner - Professional headshot"
                 width={400}
                 height={400}
-                className="rounded-lg object-cover w-full"
+                className="rounded-lg object-cover w-full md:w-100"
               />
             </div>
           </div>
 
-          <div className="lg:w-2/3">
-            <h1 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-              Hi, I’m Steve 👋
-            </h1>
-            <p className="text-lg text-slate-600 leading-relaxed">
+          <div className="lg:w-2/3 prose prose-lg prose-slate">
+            <h1 className="mb-6">Hi, I’m Steve 👋</h1>
+            <p>
               I’m a technology leader with a passion for developing high-performing teams
               and innovative software products. With years of experience in high profile
               tech companies, and success in high impact roles, I specialize in product
@@ -33,7 +31,9 @@ export default function AboutPage() {
             </p>
           </div>
         </div>
-        <Story />
+        <article className="prose prose-lg prose-slate max-w-prose mx-auto mb-16">
+          <Story />
+        </article>
       </div>
     </div>
   );
