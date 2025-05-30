@@ -36,7 +36,7 @@ export default async function BlogPage() {
         </div>
 
         {/* Newsletter Signup */}
-        <div className="bg-slate-50 rounded-lg p-8 text-center">
+        <div className="bg-gradient-to-br from-slate-200 to-slate-100 rounded-lg p-8 text-center">
           <h2 className="text-2xl font-bold text-slate-900 mb-4">Never Miss an Update</h2>
           <p className="text-slate-600 mb-6 max-w-2xl mx-auto">
             Get the latest articles on technology leadership and engineering best

@@ -1,9 +1,9 @@
-import Link from "next/link";
-import { Linkedin, Github } from "lucide-react";
+import Link from 'next/link';
+import { Linkedin, Github } from 'lucide-react';
 
 export function Footer() {
   return (
-    <footer className="bg-slate-900 text-white">
+    <footer className="bg-indigo-950 text-white">
       <div className="container mx-auto px-4 py-12">
         <div className="grid md:grid-cols-3 gap-8">
           {/* Company Info */}
@@ -65,7 +65,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-slate-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <div className="border-t border-slate-600 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-slate-400 text-sm">
             ©{new Date().getFullYear()} Stephen Gardner. All rights reserved.
           </p>

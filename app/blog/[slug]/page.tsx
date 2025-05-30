@@ -62,7 +62,7 @@ export default async function BlogPostPage({
         </article>
 
         {/* Newsletter Signup */}
-        <div className="bg-slate-50 rounded-lg p-8 text-center mb-12">
+        <div className="bg-gradient-to-br from-slate-50 to-slate-100 rounded-lg p-8 text-center mb-12">
           <h2 className="text-2xl font-bold text-slate-900 mb-4">
             Enjoyed this article?
           </h2>
