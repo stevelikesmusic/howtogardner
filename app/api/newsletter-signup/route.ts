@@ -11,19 +11,29 @@ export async function POST(req: NextRequest) {
 
     const apiKey = process.env.MAILER_LITE_API_KEY;
     if (!apiKey) {
-      return NextResponse.json({ message: 'Server misconfiguration' }, { status: 500 });
+      return NextResponse.json(
+        { message: 'Server misconfiguration' },
+        { status: 500 },
+      );
     }
 
     const mailerlite = new MailerLiteClient({ api_key: apiKey });
     try {
-      await mailerlite.subscribers.createOrUpdate({ email, status: 'unconfirmed' });
+      await mailerlite.subscribers.createOrUpdate({
+        email,
+        status: 'unconfirmed',
+      });
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
-      const msg = err?.response?.data?.message || err?.message || 'Failed to subscribe';
+      const msg =
+        err?.response?.data?.message || err?.message || 'Failed to subscribe';
       return NextResponse.json({ message: msg }, { status: 400 });
     }
 
-    return NextResponse.json({ message: 'Subscribed successfully' }, { status: 200 });
+    return NextResponse.json(
+      { message: 'Subscribed successfully' },
+      { status: 200 },
+    );
   } catch {
     return NextResponse.json({ message: 'Invalid request' }, { status: 400 });
   }

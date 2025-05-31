@@ -23,13 +23,13 @@ export function ArticleSummaryCard({
 }: ArticleSummaryCardProps) {
   return (
     <Link
+      className="group block h-full justify-between rounded-xl border-slate-200 transition-shadow hover:shadow-lg focus:ring-2 focus:ring-green-500 focus:outline-none"
       href={`/blog/${slug}`}
-      className="block h-full group border-slate-200 hover:shadow-lg transition-shadow justify-between rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500"
       tabIndex={0}
     >
-      <Card className="h-full flex flex-col justify-between">
+      <Card className="flex h-full flex-col justify-between">
         <CardHeader>
-          <CardTitle className="text-lg group-hover:text-green-600 transition-colors">
+          <CardTitle className="text-lg transition-colors group-hover:text-green-600">
             {title}
           </CardTitle>
           <CardDescription>
@@ -42,7 +42,7 @@ export function ArticleSummaryCard({
         </CardHeader>
         <CardContent>{excerpt}</CardContent>
         <CardFooter className="pt-0">
-          <span className="text-green-600 hover:text-green-700 font-medium">
+          <span className="font-medium text-green-600 hover:text-green-700">
             Read more →
           </span>
         </CardFooter>

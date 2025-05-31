@@ -48,8 +48,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     // How to properly link?
     a: ({ href, children }) => (
       <Link
+        className="font-medium text-green-600 underline hover:text-green-700"
         href={href || '#'}
-        className="text-green-600 hover:text-green-700 underline font-medium"
       >
         {children}
       </Link>
@@ -58,42 +58,42 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     // Images
     img: (props) => (
       <Image
+        className="my-6 rounded-lg"
+        height={props.height || 600}
         sizes="100vw"
         style={{ width: '100%', height: 'auto' }}
-        className="rounded-lg my-6"
         width={props.width || 800}
-        height={props.height || 600}
         {...(props as ImageProps)}
       />
     ),
 
     // Code blocks
     pre: ({ children }) => (
-      <pre className="bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto mb-6">
+      <pre className="mb-6 overflow-x-auto rounded-lg bg-slate-900 p-4 text-slate-100">
         {children}
       </pre>
     ),
     code: ({ children }) => (
-      <code className="bg-slate-100 text-slate-900 px-2 py-1 rounded text-sm font-mono">
+      <code className="rounded bg-slate-100 px-2 py-1 font-mono text-sm text-slate-900">
         {children}
       </code>
     ),
 
     // Blockquotes
     blockquote: ({ children }) => (
-      <blockquote className="border-l-4 border-green-500 pl-4 italic text-slate-600 my-6">
+      <blockquote className="my-6 border-l-4 border-green-500 pl-4 text-slate-600 italic">
         {children}
       </blockquote>
     ),
 
     // Tables
     table: ({ children }) => (
-      <div className="overflow-x-auto mb-6">
+      <div className="mb-6 overflow-x-auto">
         <table className="min-w-full border border-slate-200">{children}</table>
       </div>
     ),
     th: ({ children }) => (
-      <th className="border border-slate-200 px-4 py-2 bg-slate-50 font-semibold text-left">
+      <th className="border border-slate-200 bg-slate-50 px-4 py-2 text-left font-semibold">
         {children}
       </th>
     ),

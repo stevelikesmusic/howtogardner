@@ -32,16 +32,17 @@ type ContactFormData = {
 };
 
 export default function ContactPage() {
-  const { register, handleSubmit, control, reset, formState } = useForm<ContactFormData>({
-    defaultValues: {
-      name: '',
-      email: '',
-      company: '',
-      projectType: '',
-      timeline: '',
-      message: '',
-    },
-  });
+  const { register, handleSubmit, control, reset, formState } =
+    useForm<ContactFormData>({
+      defaultValues: {
+        name: '',
+        email: '',
+        company: '',
+        projectType: '',
+        timeline: '',
+        message: '',
+      },
+    });
   const { submit } = useWeb3Form({
     access_key: 'cc0ae117-bbc5-4643-8111-0bea618bb9f3',
     settings: {
@@ -58,31 +59,32 @@ export default function ContactPage() {
 
   return (
     <div className="container mx-auto px-4 py-12">
-      <div className="max-w-6xl mx-auto">
+      <div className="mx-auto max-w-6xl">
         {/* Hero Section */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+        <div className="mb-16 text-center">
+          <h1 className="mb-6 text-4xl font-bold text-slate-900 lg:text-5xl">
             Let’s Work Together
           </h1>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-            Ready to scale your technology and build a high-performing engineering team?
-            Let’s discuss how I can help accelerate your business growth.
+          <p className="mx-auto max-w-2xl text-xl text-slate-600">
+            Ready to scale your technology and build a high-performing
+            engineering team? Let’s discuss how I can help accelerate your
+            business growth.
           </p>
         </div>
-        <div className="flex justify-center mb-12">
+        <div className="mb-12 flex justify-center">
           <div className="center">
             <Card className="border-slate-200">
               {formState.isSubmitSuccessful ? (
                 <>
                   <CardHeader>
-                    <h2 className="text-2xl font-semibold mb-4 text-green-700">
+                    <h2 className="mb-4 text-2xl font-semibold text-green-700">
                       Thank you for reaching out!
                     </h2>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-lg text-slate-700 mb-2">
-                      Your message has been received. I look forward to connecting with
-                      you soon.
+                    <p className="mb-2 text-lg text-slate-700">
+                      Your message has been received. I look forward to
+                      connecting with you soon.
                     </p>
                   </CardContent>
                 </>
@@ -91,12 +93,13 @@ export default function ContactPage() {
                   <CardHeader>
                     <CardTitle>Start a Conversation</CardTitle>
                     <CardDescription>
-                      Tell me about your project and I’ll get back to you within 24 hours.
+                      Tell me about your project and I’ll get back to you within
+                      24 hours.
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <form onSubmit={handleSubmit(submit)} className="space-y-6">
-                      <div className="grid md:grid-cols-2 gap-4">
+                    <form className="space-y-6" onSubmit={handleSubmit(submit)}>
+                      <div className="grid gap-4 md:grid-cols-2">
                         <div className="space-y-2">
                           <Label htmlFor="name">Full Name *</Label>
                           <Input
@@ -121,14 +124,17 @@ export default function ContactPage() {
                         <Input id="company" {...register('company')} />
                       </div>
 
-                      <div className="grid md:grid-cols-2 gap-4">
+                      <div className="grid gap-4 md:grid-cols-2">
                         <div className="space-y-2">
                           <Label htmlFor="projectType">Project Type</Label>
                           <Controller
-                            name="projectType"
                             control={control}
+                            name="projectType"
                             render={({ field }) => (
-                              <Select value={field.value} onValueChange={field.onChange}>
+                              <Select
+                                value={field.value}
+                                onValueChange={field.onChange}
+                              >
                                 <SelectTrigger>
                                   <SelectValue placeholder="Select project type" />
                                 </SelectTrigger>
@@ -157,23 +163,30 @@ export default function ContactPage() {
                         <div className="space-y-2">
                           <Label htmlFor="timeline">Project Timeline</Label>
                           <Controller
-                            name="timeline"
                             control={control}
+                            name="timeline"
                             render={({ field }) => (
-                              <Select value={field.value} onValueChange={field.onChange}>
+                              <Select
+                                value={field.value}
+                                onValueChange={field.onChange}
+                              >
                                 <SelectTrigger>
                                   <SelectValue placeholder="Select timeline" />
                                 </SelectTrigger>
                                 <SelectContent>
                                   <SelectItem value="asap">ASAP</SelectItem>
-                                  <SelectItem value="1-month">Within 1 month</SelectItem>
+                                  <SelectItem value="1-month">
+                                    Within 1 month
+                                  </SelectItem>
                                   <SelectItem value="3-months">
                                     Within 3 months
                                   </SelectItem>
                                   <SelectItem value="6-months">
                                     Within 6 months
                                   </SelectItem>
-                                  <SelectItem value="flexible">Flexible</SelectItem>
+                                  <SelectItem value="flexible">
+                                    Flexible
+                                  </SelectItem>
                                 </SelectContent>
                               </Select>
                             )}
@@ -184,16 +197,20 @@ export default function ContactPage() {
                       <div className="space-y-2">
                         <Label htmlFor="message">Details *</Label>
                         <Textarea
-                          id="message"
                           className="h-40"
+                          id="message"
                           {...register('message', { required: true })}
+                          required
                           placeholder="Tell me about your project, current challenges, and/or what you're looking to achieve..."
                           rows={6}
-                          required
                         />
                       </div>
 
-                      <Button type="submit" size="lg" className="w-full cursor-pointer">
+                      <Button
+                        className="w-full cursor-pointer"
+                        size="lg"
+                        type="submit"
+                      >
                         Send Message
                       </Button>
                     </form>

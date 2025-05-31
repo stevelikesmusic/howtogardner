@@ -19,7 +19,9 @@ export default async function BlogPostPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const { default: Article, metadata } = await import(`@/articles/${slug}/index.mdx`);
+  const { default: Article, metadata } = await import(
+    `@/articles/${slug}/index.mdx`
+  );
 
   if (!Article || !metadata) {
     notFound();
@@ -27,18 +29,18 @@ export default async function BlogPostPage({
 
   return (
     <div className="container mx-auto px-4 py-12">
-      <div className="max-w-4xl mx-auto">
+      <div className="mx-auto max-w-4xl">
         {/* Article Header */}
         <header className="mb-6">
           <div className="mb-4">
             <Badge variant="secondary">{metadata.tags?.[0]}</Badge>
           </div>
 
-          <h1 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+          <h1 className="mb-6 text-4xl font-bold text-slate-900 lg:text-5xl">
             {metadata.title}
           </h1>
 
-          <p className="text-xl text-slate-500 mb-8">{metadata.excerpt}</p>
+          <p className="mb-8 text-xl text-slate-500">{metadata.excerpt}</p>
 
           <div className="flex items-center gap-6 text-sm text-slate-500">
             <div className="flex items-center gap-2">
@@ -57,18 +59,18 @@ export default async function BlogPostPage({
         <Separator className="mb-12" />
 
         {/* Article Content */}
-        <article className="prose prose-lg prose-slate max-w-prose mx-auto mb-16">
+        <article className="prose prose-lg prose-slate mx-auto mb-16 max-w-prose">
           <Article />
         </article>
 
         {/* Newsletter Signup */}
-        <div className="bg-gradient-to-br from-slate-50 to-slate-100 rounded-lg p-8 text-center mb-12">
-          <h2 className="text-2xl font-bold text-slate-900 mb-4">
+        <div className="mb-12 rounded-lg bg-gradient-to-br from-slate-50 to-slate-100 p-8 text-center">
+          <h2 className="mb-4 text-2xl font-bold text-slate-900">
             Enjoyed this article?
           </h2>
-          <p className="text-slate-600 mb-6">
-            Subscribe to get more insights on technology leadership and engineering best
-            practices.
+          <p className="mb-6 text-slate-600">
+            Subscribe to get more insights on technology leadership and
+            engineering best practices.
           </p>
           <NewsletterSignup />
         </div>

@@ -14,7 +14,13 @@ interface FigureProps extends React.HTMLAttributes<HTMLDivElement> {
   };
 }
 
-export function Figure({ creator, source, children, className, ...props }: FigureProps) {
+export function Figure({
+  creator,
+  source,
+  children,
+  className,
+  ...props
+}: FigureProps) {
   return (
     <figure
       className={`mt-10 mb-12 flex flex-col items-center ${className || ''}`}
@@ -22,13 +28,13 @@ export function Figure({ creator, source, children, className, ...props }: Figur
     >
       {children}
       {creator?.url && source?.url && (
-        <figcaption className="mt-2 text-center text-sm text-muted-foreground">
+        <figcaption className="text-muted-foreground mt-2 text-center text-sm">
           Photo by{' '}
           <Link
             className="underline"
             href={creator.url}
-            target="_blank"
             rel="noopener noreferrer"
+            target="_blank"
           >
             {creator.name}
           </Link>{' '}
@@ -36,8 +42,8 @@ export function Figure({ creator, source, children, className, ...props }: Figur
           <Link
             className="underline"
             href={source.url}
-            target="_blank"
             rel="noopener noreferrer"
+            target="_blank"
           >
             {source.name}
           </Link>

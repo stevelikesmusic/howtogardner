@@ -42,35 +42,37 @@ export function NewsletterSignup() {
 
   if (isSubmitSuccessful) {
     return (
-      <div className="flex items-center flex-col justify-center space-x-2 text-green-600">
+      <div className="flex flex-col items-center justify-center space-x-2 text-green-600">
         <p className="flex items-center space-x-2">
           <CheckCircle className="h-5 w-5" />
           <span className="font-medium">Thanks for subscribing!</span>
         </p>
-        <p className="text-green-600">Please confirm in the email you just received.</p>
+        <p className="text-green-600">
+          Please confirm in the email you just received.
+        </p>
       </div>
     );
   }
 
   return (
     <form
+      className="mx-auto flex max-w-md flex-col gap-2 sm:flex-row"
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col sm:flex-row gap-2 max-w-md mx-auto"
     >
-      <div className="flex-1 flex items-start flex-col gap-1">
+      <div className="flex flex-1 flex-col items-start gap-1">
         <Input
-          type="email"
           placeholder="Enter your email"
+          type="email"
           {...register('email', { required: 'Email is required' })}
           required
           className="flex-1"
           disabled={isSubmitting}
         />
         {errors.email && (
-          <span className="text-red-500 text-sm">{errors.email?.message}</span>
+          <span className="text-sm text-red-500">{errors.email?.message}</span>
         )}
       </div>
-      <Button type="submit" disabled={isSubmitting}>
+      <Button disabled={isSubmitting} type="submit">
         {isSubmitting ? 'Subscribing...' : 'Subscribe'}
       </Button>
     </form>
