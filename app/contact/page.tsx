@@ -46,7 +46,7 @@ export default function ContactPage() {
   const { submit } = useWeb3Form({
     access_key: 'cc0ae117-bbc5-4643-8111-0bea618bb9f3',
     settings: {
-      from_name: 'HowToGardner Contact Form',
+      from_name: 'howtogardner.com Contact Form',
       subject: 'New "Let’s Work" Form Submission',
     },
     onSuccess: () => {
@@ -67,8 +67,12 @@ export default function ContactPage() {
           </h1>
           <p className="mx-auto max-w-2xl text-xl text-slate-600">
             Ready to scale your technology and build a high-performing
-            engineering team? Let’s discuss how I can help accelerate your
-            business growth.
+            engineering team? Looking for coaching to get that next job?
+          </p>
+          <br />
+          <p className="mx-auto max-w-2xl text-xl text-slate-600">
+            Let’s discuss how I can help accelerate your business growth or
+            career.
           </p>
         </div>
         <div className="mb-12 flex justify-center">
