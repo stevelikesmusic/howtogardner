@@ -12,8 +12,8 @@ export function Footer() {
               <span className="text-xl font-bold">Stephen Gardner</span>
             </div>
             <p className="mb-6 max-w-md text-slate-300">
-              Fractional CTO and engineering consultant helping growing
-              companies scale their technology and build high-performing teams.
+              Fractional CTO and engineering consultant helping companies scale
+              their technology and build high-performing teams.
             </p>
             <div className="flex space-x-4">
               <Link
