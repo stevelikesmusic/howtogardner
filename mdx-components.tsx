@@ -46,14 +46,21 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 
     // Links
     // How to properly link?
-    a: ({ href, children }) => (
-      <Link
-        className="font-medium text-green-600 underline hover:text-green-700"
-        href={href || '#'}
-      >
-        {children}
-      </Link>
-    ),
+    a: ({ href, children }) => {
+      const isInternal =
+        href?.startsWith('#') || ['localhost', 'howtogardner'].includes(href);
+      const props = isInternal ? {} : { target: '_blank' };
+
+      return (
+        <Link
+          {...props}
+          className="font-medium text-green-600 underline hover:text-green-700"
+          href={href || '#'}
+        >
+          {children}
+        </Link>
+      );
+    },
 
     // Images
     img: (props) => (
