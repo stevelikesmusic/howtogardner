@@ -58,7 +58,7 @@ export default function ContactPage() {
   });
 
   return (
-    <div className="container mx-auto px-4 py-12">
+    <section className="container mx-auto px-4 py-12">
       <div className="mx-auto max-w-6xl">
         {/* Hero Section */}
         <div className="mb-16 text-center">
@@ -225,6 +225,6 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

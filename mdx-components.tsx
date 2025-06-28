@@ -54,7 +54,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       return (
         <Link
           {...props}
-          className="font-medium text-green-600 underline hover:text-green-700"
+          className="font-medium text-slate-800 underline decoration-2 underline-offset-2 transition-colors hover:text-slate-600 hover:decoration-slate-400"
           href={href || '#'}
         >
           {children}
@@ -88,7 +88,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 
     // Blockquotes
     blockquote: ({ children }) => (
-      <blockquote className="my-6 border-l-4 border-green-500 pl-4 text-slate-600 italic">
+      <blockquote className="my-6 border-l-4 border-slate-400 pl-4 text-slate-600 italic">
         {children}
       </blockquote>
     ),

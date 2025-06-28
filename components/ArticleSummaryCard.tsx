@@ -1,12 +1,4 @@
 import Link from 'next/link';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-  CardFooter,
-} from '@/components/ui/card';
 
 export type ArticleSummaryCardProps = {
   slug: string;
@@ -22,31 +14,38 @@ export function ArticleSummaryCard({
   date,
 }: ArticleSummaryCardProps) {
   return (
-    <Link
-      className="group block h-full justify-between rounded-xl border-slate-200 transition-shadow hover:shadow-lg focus:ring-2 focus:ring-green-500 focus:outline-none"
-      href={`/blog/${slug}`}
-      tabIndex={0}
-    >
-      <Card className="flex h-full flex-col justify-between">
-        <CardHeader>
-          <CardTitle className="text-lg transition-colors group-hover:text-green-600">
-            {title}
-          </CardTitle>
-          <CardDescription>
+    <Link className="group block h-full" href={`/blog/${slug}`}>
+      <div className="group h-full rounded-2xl bg-white p-8 shadow-lg transition-all hover:-translate-y-2 hover:shadow-2xl">
+        <div className="mb-4">
+          <p className="mb-2 text-sm font-medium text-gray-500">
             {new Date(date).toLocaleDateString('en-US', {
               year: 'numeric',
               month: 'long',
               day: 'numeric',
             })}
-          </CardDescription>
-        </CardHeader>
-        <CardContent>{excerpt}</CardContent>
-        <CardFooter className="pt-0">
-          <span className="font-medium text-green-600 hover:text-green-700">
-            Read more →
-          </span>
-        </CardFooter>
-      </Card>
+          </p>
+          <h3 className="mb-4 text-xl font-bold text-slate-800 group-hover:text-slate-900">
+            {title}
+          </h3>
+        </div>
+        <p className="mb-6 leading-relaxed text-gray-600">{excerpt}</p>
+        <div className="flex items-center font-semibold text-slate-800 group-hover:text-slate-600">
+          Read Article
+          <svg
+            className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M9 5l7 7-7 7"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+            />
+          </svg>
+        </div>
+      </div>
     </Link>
   );
 }

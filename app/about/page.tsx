@@ -3,7 +3,7 @@ import Story from './story.mdx';
 
 export default function AboutPage() {
   return (
-    <div className="container mx-auto px-4 py-12">
+    <section className="container mx-auto px-4 py-12">
       <div className="mx-auto max-w-4xl">
         {/* Hero Section with Image */}
         <div className="mb-16 flex flex-col gap-12 lg:flex-row">
@@ -37,6 +37,6 @@ export default function AboutPage() {
           <Story />
         </article>
       </div>
-    </div>
+    </section>
   );
 }

@@ -123,5 +123,18 @@
 }
 
 html {
-  scroll-padding-top: 4.5rem; /* or 72 px, etc. */
+  scroll-padding-top: 5rem; /* 80px to account for fixed header */
+}
+
+/* Custom gradient matching the reference design */
+.bg-brand-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Gradient text for active nav links */
+.text-brand-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }

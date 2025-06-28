@@ -1,34 +1,36 @@
 'use client';
 
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
-import { COMMON_CTA } from '@/lib/constants';
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   const navigation = [
-    { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
-    { name: 'Blog', href: '/blog' },
+    { name: 'Articles', href: '/blog' },
     { name: 'Contact', href: '/contact' },
   ];
 
+  const isActive = (href: string) => {
+    if (href === '/blog') {
+      return pathname === '/blog' || pathname?.startsWith('/blog/');
+    }
+    return pathname === href;
+  };
+
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
-      <div className="container mx-auto px-4">
+    <header className="fixed top-0 z-50 w-full bg-white shadow-lg">
+      <div className="container mx-auto px-5">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link className="flex items-center space-x-2" href="/">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-green-600">
-              <span className="text-sm font-bold text-white">SG</span>
-            </div>
-            <span className="text-xl font-bold text-slate-900">
-              How to Gardner
-            </span>
+          <Link className="text-2xl font-bold text-slate-800" href="/">
+            Steve Gardner
           </Link>
 
           {/* Desktop Navigation */}
@@ -36,20 +38,17 @@ export function Header() {
             {navigation.map((item) => (
               <Link
                 key={item.name}
-                className="text-slate-600 transition-colors hover:text-slate-900"
+                className={`font-medium transition-colors ${
+                  isActive(item.href)
+                    ? 'text-brand-gradient'
+                    : 'hover:text-brand-gradient text-slate-800'
+                }`}
                 href={item.href}
               >
                 {item.name}
               </Link>
             ))}
           </nav>
-
-          {/* CTA Button */}
-          <div className="hidden md:flex">
-            <Button asChild>
-              <Link href="/contact">{COMMON_CTA}</Link>
-            </Button>
-          </div>
 
           {/* Mobile Menu */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -64,20 +63,17 @@ export function Header() {
                 {navigation.map((item) => (
                   <Link
                     key={item.name}
-                    className="text-lg text-slate-600 transition-colors hover:text-slate-900"
+                    className={`text-lg font-medium transition-colors ${
+                      isActive(item.href)
+                        ? 'text-brand-gradient'
+                        : 'hover:text-brand-gradient text-slate-800'
+                    }`}
                     href={item.href}
                     onClick={() => setIsOpen(false)}
                   >
                     {item.name}
                   </Link>
                 ))}
-                <div className="pt-4">
-                  <Button asChild className="w-full">
-                    <Link href="/contact" onClick={() => setIsOpen(false)}>
-                      {COMMON_CTA}
-                    </Link>
-                  </Button>
-                </div>
               </div>
             </SheetContent>
           </Sheet>
