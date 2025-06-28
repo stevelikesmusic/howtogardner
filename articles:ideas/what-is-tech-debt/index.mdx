@@ -1,0 +1,228 @@
+export const metadata = {
+  date: '2025-04-22',
+  draft: true,
+  title: 'What Is Tech Debt',
+  excerpt:
+    'A tale of metaphors and how to describe when a system is underinvested',
+};
+
+Technical debt seems to be a word that many people in tech know _of_, but struggle to be able to articulate what it actually is. Tech debt is choices. Choices made by leaders on where to invest. Choices by engineers in what technology they choose to use. And choices by product managers in how fast they drive the team to deliver.
+
+Tech debt as entropy. As companies grow, so too do the systems in which they operate grow. Without constant investment and energy, entropy grows. With higher entropy and uncertainty, those increasingly complex systems are [more likely to fail](https://how.complexsystems.fail/).
+How can I address both executive leaders and engineers authentically?
+
+How are best practices established?
+
+- People don't care that a fire is coming. They care about living peacefully in their house everyday
+
+I know you don't care about wildfires, but if you built this, the fires won't ever bother you.
+
+How is evidence based practice assessed in software? What is one crucial thing people can do. Here's the evidence. Here's one thing you can do. If you're really interested, here are three more.
+
+**If you do one thing, do this.**
+
+Here's the cognitive pyschology of why we're making these decisions. What are the pressures in building software?
+
+- Building something people love
+- Getting enough customers
+- Growing revenue
+- Building something that can grow
+
+Humans tend to go for the fast easy thinking. What percentage of people build sustainably vs. fast and loose. How often do systems fail vs. grow and lead people toward the future?
+
+Technical debt also as cutting corners
+
+- In real estate development (Miami tower)
+- Building electrical grids
+- City services
+- Supply chains in Covid
+-
+
+Do I identify the type of builders here? A story of people?
+
+How do I approach with an open hand vs. a closed fist? How do I make people feel something good before trying to influence? This article leads on fear.
+
+What stories might demonstrate kindness and sharing and helping others?
+
+How have I lead people to make choices that they didn't want to make?
+
+- Talk about how dealing with this is a collaborative effort
+- How did I do this at Netflix?
+
+How do I write from a place of kindness and collaboration rather than anger and rage?
+
+Who am I telling a story to? To John, Jose, Oliver, Hamzah, E Stone, G Peters?
+
+# New Intro
+
+At my very first company, I had my very first foray into working with mature codebases and technical debt. It was a 13 year old Java project. Over time and many acquisitions, the project had grown to include 3 frameworks (Struts v1, Struts v2, and Spring) as well as 3 data access patterns (custom DAOs, Hibernate, and raw SQL).
+
+The most challenging tech debt I worked with was at Netflix. Netflix is renowned for moving quickly and purposefully. The move from custom datacenters and named servers to AWS and clusters of autoscaling clusters is one shining example.
+
+I worked on a team that operated the legacy Edge APIs—these are the APIs that connect device requests to the multitude of microservices that is Netflix. Around 2024, there were 4 generations of Edge API architecture receiving traffic. Our team owned generations 1 through 3, with GraphQL Federation accounting for the 4th generation.
+
+Many migration efforts had been embarked upon to migrate off of the generation v2 (we'll call it APIv2). APIv2 at the time still handled around 50k requests per second (RPS). Devices teams that connected to APIv2 had celebrated the completion of migrating to APIv3 back in 2022—though 50k RPS of traffic remained. The biggest problem with APIv2 is that it effectively is a platform that serves endpoints written by device UI teams in the Groovy language. Supporting these thousands of endpoints scripts became burdensome and a bottleneck to innovation, so device teams invented a graph protocol named Falcor and began the migration process.
+
+Migrations are only effective when they are 100% and unfortunately the migration effort only accounted for the most trafficked areas of Netflix requests.
+
+When I joined the team, my mandate was to finish migration of the Web platform. This was a challenge. Because of the nature of these migrations, we couldn't automate the process with tooling. The process looked something like this:
+
+1. Scripts had to be analyzed to understand what data was provided
+2. An engineer then needed to find if there was an API in APIv3 for APIv4 that had data parity. If it did, we were on the happy path.
+3. If not, we needed to either build it in v3 (suboptimal as teams were moving to v3), or figure out how to make the data available in APIv4 (Federated GraphQL for those playing at home)
+4. Once data was made available, once the data was available, we needed to wire up netflix.com to fetch the new data, normalize the shape to match the existing contract with the UI, and return the new implementation.
+
+I'm skipping over some additional steps, but this was the general working model. Where to begin? Over the course of 2024, I developed a successful working model for influencing team roadmaps across engineering to prioritize migrations that had languished for 3 years.
+
+Before we go further, why even worry about these migrations? Teams had depriotized them because the idea was that the "throw away" work of migrating would be wasted once device teams migrated to GraphQL. We knew that APIv2 was an at risk service. Because of those thousands of Groovy scripts I mentioned before, we were unable to upgrade the service to the recommended configurations and libraries from our Platform teams. This meant that APIv2 was at risk from:
+
+- Crashing unexpectedly from changing traffic patterns
+- Crashing from automated Platform updates
+- Not able to be recovered from one of these two scenarios
+
+As it was, Netflix jumped into prime time live streaming events with a boxing event that broke the internet that November because of a record turnout. It should come as no surprise that a system built at the start of Netflix's streaming days was ill equiped to handle the demands of over 60 million concurrent streams.
+
+This was the danger we saw.
+
+How do you go about trying to influence teams to prioritize the thing they're sure isn't important? Relationships. You exercise empathy and collboration to build trust.
+
+I went into the first meeting with a partner team having cataloged the problem endpoints and identified alternative data sources. I had a guidebook on how to answer questions of data parity. And I was commited to being a reliable partner throughout. With a clear plan and proper framing of the danger for remaining on APIv2, we got to work. That first partner team was a huge success.
+
+From that intitial relationship, I made connections with more teams. The relationships grew and this important migration work was underway. By spring of 2025, we had reduced traffic to APIv2 by 90%. The most critical endpoints being migrated shortly before that boxing event.
+
+So what were the lessons learned?
+
+### Have a Clear Plan
+
+Everything I met with a new team I had my growing catalog and playbook with me—well in Coda rather. I showed having already spent time and energy in understanding the problem and having done the work to build a solution. The catalog not only helped us understand what endpoints remained, it was a detailed view of all the intricacies of each endpoint, what data it provided, and where we might find the data elsewhere.
+
+### Worry About Scalability Later
+
+This was a project that had drastically stalled. The scalable approach had been tried. This was going to take getting in the weeds. That meant opening PRs in a multititude of repos. It meant sharing with colleagues about observability tools at our disposal to get answers and verify efficacy. I did a lot of detective work trying to understand the breadth of the Netflix ecosystem to best help our partner teams.
+
+### Focus on Trust and Dependability
+
+Too often, migrations are mandated via a strongly worded email. Through taking the approach of building relationships, word spread about this working model. When teams needed help, I pivoted. Not sure where to find metrics for a service? I got it. The data isn't available outside of APIv2? I'm start conversations with mid-tier teams to build out new GraphQL fields and types in our graph.
+
+### Stay Organized
+
+This meant there were a lot of balls in the air. This also meant staying organized would be incredibly important. Using the catalog, I could track which team was working on which endpoint. Each endpoint cataloged contributors, RPS, where data lived, and what risks it posed. Staying organized kept my own sanity, and let me know which EMs and tech-leads to follow up with.
+
+## Call to Action
+
+Build relationships with your colleagues. Try something that isn't quite so scalable and be of service to your partners. The good will pays off in ways you can't imagine. Those relationships begin to build a culture to kindness and collaboration that can work to solve some very gnarly problems.
+
+The final 20% of a migration is hard. And the last 5% is tiresome. But that's where some of the most important work is. Leading up to the November boxing event, we had a regional scale test where Netflix effectively took over us-east-1 and sent synthetic traffic to simulate the expected demand. APIv2 tanked and brought netflix.com with it. In this state, APIv2 couldn't be restarted while the live simulation continued to send the traffic spike. And with netflix.com down, we could know that people would not be able to sign up for Netflix leading up to the fight. The test was quickly postponed to get the service back into a healthy state.
+
+Thanks to our plan, myself, my team, and our partner teams had been hard at work anticipating this type of outage for the last few months. Work was underway to prevent another retry storm from the netflix.com UI. And two endpoints that were called for every web request were already having their new implementations being tested in production for weeks leading up to the test outage.
+
+While leadership insisted that APIv2 needed to finish its remaining long-tail of migrations, we shipped the in-flight migrations a few days later, and APIv2 did not have any impact on the largest live sports streaming event ever.
+
+Build those relationships. Care to know the people you work with. The effort you spend showing empathy and being of service to your colleagues will pay off in outsized ways.
+
+## Recap
+
+This is part of a series on exploring tech debt, its implications, and how to manage it effectively.
+
+1. [A Tale of Tech Debt](/articles/a-tale-obf-tech-debt/) - Why care about tech-debt
+1. **What Is Tech Debt**
+1. How to tell a system is overleveraged - Signs your systems may be at risk
+1. Tackling tech debt - Continuous investment in software systems
+
+Technical debt represents one of the most misunderstood concepts in software development. While most technology professionals recognize the term, few can articulate what it actually means or why it inevitably emerges in every software system. This misunderstanding leads to a dangerous cycle: investment in software maintenance gets deprioritized until crisis strikes.
+
+The consequences of this cycle aren't theoretical. They're measured in millions of lost revenue, damaged reputations, and competitive disadvantage. As we explored in the first article of the series, Southwest Airlines learned this lesson the hard way during their December 2022 meltdown. Decades of deferred technical investment triggered a cascading failure that stranded millions of passengers and cost the company over $800 million.
+
+## The True Nature of Technical Debt
+
+As discussed in the previous article, Ward Cunningham's debt metaphor captures a profound insight: technical choices allow you to achieve something sooner than you otherwise could, but they create ongoing obligations that compound over time. However, the common understanding of technical debt often oversimplifies this concept. Technical debt isn't simply "bad code" or "shortcuts taken by developers."
+
+I propose a more nuanced definition:
+
+> Technical debt represents the compounding effects of choices and time on software systems.
+
+These choices span multiple dimensions:
+
+- **Leadership** on where to invest resources and set priorities
+- **Engineering** in technologies, architectures, and implementation approaches
+- **Product** in feature scope, timelines, and quality trade-offs
+- **Organizational** in team structure, processes, and knowledge management
+
+Over time, these choices weather under various pressures, creating the maintenance burden we call technical debt. Understanding this broader view helps explain why paying down debt requires more than just "cleaning up code"—it demands intentional investment across technology, process, and organizational dimensions.
+
+## Why do we even have tech-debt?
+
+I view tech debt as a compounding outcome of choices and time. Choices made by leaders on where to invest and prioritize. Choices by engineers in what technologies and designs they choose to use. And choices by product managers in how they drive the team to deliver. Over time, those choices get weathered by many factors.
+
+I propose we think of tech debt as as a metaphor for continuously investing (or not) in a software system. While choosing not to invest in tech-debt increases the leverage, there are a number of causes to the actual problems that investment would help.
+
+Here are some common examples I've observed in my career:
+
+1. Short term choices are catching up
+1. The business is evolving
+1. Entropy grows over time
+1. Siloed decisions (not sure about this one)
+
+Let's look at each of these. A caveat is that this article is meant to provide nuance to _what_ tech-debt is. The last article in the series will go into steps to tackle debt when systems become over-leveraged.
+
+## Short Term Decisions
+
+This is the poster child for tech debt. Perhaps, there's an urgent business need or some time constraint a team is given. Engineers are then incentivized to make fast decisions and deliver immediate business value. This is often the case in early stage companies, but I've seen it plenty of times with mature companies as well. There's nothing wrong with a scrappy solution that does the job. It's when those decisions and solutions are never revisited. The hacked solutions begin to stack up and compound. Software as it grows, often becomes more and more complex. It's an effect of supporting a multitude of product needs and customer considerations.
+
+A quick note about documentation. Moving quickly often means lots of code with very few, if any, documentation. This works fine when the team is small and unchanging. It becomes very difficult to onboard new folks, and even more challenging when the experts of a domain are no longer working in that area—more on that later.
+
+The effect of short term decisions is the thing we talk about the most—what Ward Cunningham was initially calling out. When the business is moving quickly to earn customers, short term solutions do the job. No customers, no reason for the debt. Eventually (and hopefully), the product out lives the short term and needs to grow up. The longer it takes to invest in long term solutions, the more expensive—and riskier—it becomes move into stable long-term designs.
+
+## The Business is Evolving
+
+Over time, hopefully, the business grows. The product evolves. More customers are using the product. Eventually, the system can become overwhelmed by the demand years from when its architecture was designed. This is a bit of an inevitability for a successful business. The only certainty is change. And our software needs to continue to evolve.
+
+This case has played out over and over:
+
+{/* Add links */}
+
+- Netflix moving to the cloud
+- Twitter moving from Rails to Scala
+- Other use cases
+
+This kind of tech-debt is something to celebrate. The business did it! You're now looking at a scaling inflection point for the system. Different companies have responded differently to these critical junctures—and they don't just happen once. Short-term patches here might get you out of some jams, but it defers an even greater, costlier pain down the road—remember Southwest.
+
+This is where long-term decisions need to be made on how to scale the system. Do we build a net new solution? Do we try and fit our new understanding of the world into the old system? How do we even get from the old to the new state of the business? It all depends, and we'll explore those choices further later in the series.
+
+## Software and Entropy
+
+The concept of entropy can be found in a few places (links). At its core, the idea of entropy explains that a system will degrade into chaos and nothingness unless energy is applied to that system. Put another way, lack of constant energy into a system causes the system to constantly degrade. This is certainly clear in building software. As companies grow, so too do their systems grow. Without constant investment and energy in maintaining those systems, entropy grows. With higher entropy and uncertainty, those increasingly complex systems are [more likely to fail](https://how.complexsystems.fail/).
+
+### Internal Entropy
+
+A software system is exposed to multiple layers of entropy just within itself—the actual code, its build pipelines, and the team. The product is constantly evolving, so changes are constantly being made to the system. Automated testing is a crucial part of building software, but how has the team built the test suite? Many times, I've seen testing become a bottleneck to build times and CI pipelines. Are the tests providing the right amount of value given the cost of running those tests? Building the right test coverage is a whole other topic we can explore.
+
+Teams are changing as well. As a company grows, teams composition will certainly change. New engineers join, seasoned engineers move on, and reorgs shuffle engineers into different domains. It can be that a crucial system is no longer operated by its primary contributors. The expertise of building and maintaining that software is no longer connected to the owners of that system. Maybe the experts are no longer even with the company. One of the biggest tech-debt outcomes in these scenarios is a knowledge debt, because often times there is little to no documentation regarding the system. Product and architectural decisions are either in obscure documents or the heads of long-gone contributors. That is crucial context for new contributors to a software project. AI can help here with understaning a large codebase—always confirm its conclusions for hallucinations—but the business context is critical for making the right technical decisions.
+
+### External Entropy
+
+As our software systems are constantly changing, so to is the world around those systems changing. Some forms of entropy external to your software are:
+
+- Third-party software dependencies
+- Infrastructure dependencies like the provider hosting your services
+- Big market shifts like the rise of AI
+
+Most software we build leverages external dependencies, especially open source software (OSS). Those dependencies are constantly changing. Some typical forms of dependency entropy:
+
+- A library is deprecated and no longer supported
+- Breaking changes are introduced that cause unexpected side effects to your system
+- A security bug is found in a dependency and requires immediate resolution
+
+I'm in no way suggesting we don't use OSS dependencies. Only that without a constant investment of time and energy, dependencies become a source of tech debt pain.
+
+Another place of external dependency is the infrastructure that system is deployed to. Infra can be managed internally or outsourced to a vendor—oftentimes a combination of both. We can talk about steps to build resilient systems through platform infra later, but here its worth noting that as platforms evolve, teams must continue to invest in keeping up with those platforms. I've been at companies where systems had drifted so far from Platform recommendations that an automated dependency update might crash that system.
+
+High entropy vs. low entropy decisions in engineering. High entropy meaning that it will need further investment sooner. Low entropy often implying higher investment now giving a longer life of lower entropy.
+
+The effects of leadership decisions causing knowledge (operational and maintenance) to be siloed or lost. Early decisions to bootstrap a project or produce need. That can't be a forever decision or even one that doesn't get nurtured and developed further or replaced as the business grows.
+
+High entropy means that change can happen fast from the product. Quick decisions in early days mean that product can quickly pivot and re-engineer when needed. But as the business grows, those decisions can become a liability. As the business gains more customers who are paying money, stability is needed. There need to be more lower entropy decisions and more stability overall. The things that get an early stage startup off the ground are not the things that will get them to be a public company. Similarly for that company to get to the next level of growth, there needs to be a balance of high and low entropy investments. The company needs to still be able to take risks and make bets on new products, but those bets need to be made with a clear understanding of the risk and the potential impact on the business. Additionally, the company needs to lower the overall entropy of the underlying platforms that power the product experience.
+
+What are examples of high and low entropy. What do I mean by entropy at all??
+
+How does tech debt manifest?

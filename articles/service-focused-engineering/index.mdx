@@ -1,0 +1,162 @@
+export const metadata = {
+  date: '2025-06-14',
+  draft: true,
+  tags: ['tech-debt', 'leadership', 'relationships', 'case-study'],
+  category: 'Leadership',
+  title: 'The Service Oriented Leader',
+  excerpt:
+    'Building leadership influence through true partnership, not authority',
+};
+
+In November 2024, Netflix's Paul v. Tyson boxing event broke [records](https://www.cnbc.com/2024/11/19/mike-tyson-jake-paul-fight-was-most-streamed-sports-event-netflix-says.html)<sup>[[1](#1)]</sup> with over 65 million concurrent streams—a huge success for Netflix. But it nearly didn't happen that way. During pre-event scale testing, a 12-year-old API system that teams had abandoned migrating from crashed and took down netflix.com with it.
+
+I had spent that year leading the effort to finally complete that migration. When the failure from the pre-event test occurred, we already had new endpoint implementations being tested in production. Days after engineering leadership met to post-mortem the test failure, fixes were shipped and Netflix once again made history.
+
+Here's what I learned: The most effective way to build leadership influence is to be of genuine service to your colleagues. When you consistently make people's jobs easier and care about their success, they choose to work with you on complex problems. This service-oriented approach to leadership is what helped prevent a three-year stalled migration from turning into a business disaster.
+
+## When Technology Problems Become Coordination Problems
+
+At Netflix, I worked on the team that operated the legacy Edge APIs—those critical services connecting device requests to Netflix's microservice ecosystem. By 2024, four generations of Edge API architecture were receiving traffic simultaneously. Our team owned generations one through three, while federated GraphQL represented the fourth generation.
+
+For simplicity, I'll call the most problematic Edge API, APIv2—the 2nd generation Edge API service—at the time still handling around 50,000 requests per second (RPS). The system operated as a platform serving thousands of endpoint scripts written by device UI teams.
+
+What made APIv2 particularly problematic:
+
+- **Platform isolation**: Thousands of custom Groovy scripts prevented upgrades to recommended and supported configurations
+- **Brittleness**: Vulnerable to crashes from changing traffic patterns or automated platform updates
+- **Recovery complexity**: Could be impossible to restart during traffic spikes
+- **Scale limitations**: Built during Netflix's early streaming days and not designed for the massive spike in demand from a major live event.
+
+Teams had celebrated completing the migration to APIv3 back in 2022, yet 50k RPS of traffic remained. A large chunk of that traffic was from the Web platform, netflix.com. The remaining surface area was large—with over a dozen teams involved and around 100 endpoints.
+
+### Influence Without Authority
+
+When I joined the team in early 2024, partners remaining on APIv2 had abandoned completing the migration. The technical solution was clear, but the execution required coordination across teams many different teams with competing priorities and unclear ownership.
+
+The prevailing perspective was that remaining APIv2 work was a "throw-away effort"—low-value work before migrating to GraphQL anyway. They weren't wrong. From their perspective, spending engineering cycles on APIv2 seemed wasteful when they'd need to rewrite everything again in 12-18 months. But we knew APIv2 represented a major risk.
+
+How do you influence teams to prioritize work they see as unnecessary when the business risk is real and immediate? This required a fundamentally different approach than mandates or escalations.
+
+## Being of Service and a True Partner
+
+Instead of trying to influence through authority or expertise, I focused on one question: _"How can I make this easier for you?"_
+
+This approach led me to take on whatever role my partners needed. Sometimes as an engineer who understood their technical constraints. Sometimes a project manager tracking dependencies. Sometimes a leader advocating with other teams. The roles weren't a strategy—they emerged from a genuine interest in trying to be of service.
+
+### Deep Preparation Enables Deep Work
+
+Normally I start with a proof of concept and start getting feedback on an idea. This problem was a little different because of the complexity. I spent weeks before any partner conversations understanding the technical landscape, getting context from the stunning colleagues on my team, and creating comprehensive documentation. This wasn't just preparation—it was my first act of service.
+
+#### What I prepared for each team:
+
+- **Technical catalog**: Every APIv2 endpoint mapped with data sources, traffic metrics, and migration complexity
+- **Gap analysis**: What was missing in the current Edge APIs that would need to be built
+- **Risk assessment**: How APIv2 crashes could specifically impact their services
+- **Migration roadmap**: Clear technical approach for their specific endpoints
+
+When teams saw I'd already invested significant time understanding their specific challenges, they engaged differently. I wasn't asking them to do all the work—I was offering to help them solve a problem I'd already spent time understanding.
+
+### Lead with Solutions, Not Problems
+
+Every partner conversation began with curiosity and solutions, not requests. I knew the pains of constant migrations and the need to balance priorities. I also knew the risk of remaining on APIv2—for these teams and for the business. I listened to the concerns, and then shared the real implications of remaining on a system that could irrecoverably crash from unexpected load or platform updates. In sharing the inherent risk of APIv2, we developed a new story. This migration was about maintaining stability of their products. It should be thought of separately from moving to APIv4.
+
+In empathizing and sharing context, I could then answer concerns:
+
+**"I've mapped your data dependencies and created a migration plan. Here's what I found..."**
+
+**"I started a PR for your first endpoint migration. Want to walk through it?"**
+
+**"Your service metrics are hard to find—I've gathered them and documented where to get them next time."**
+
+This approach transformed the dynamic. Instead of being someone asking for their help, I became someone offering mine.
+
+## Taking On Different Roles Helped
+
+Being genuinely of service meant adapting to what each partner needed.
+
+When teams needed technical credibility, I created detailed implementation guides for their specific use cases. This included building missing data sources when platforms couldn't provide needed APIs. I also contributed actual code to prove migration approaches worked and provide a pattern for their specific application.
+
+When they needed organization support, I tracked dependencies across multiple teams and services. Creating the project catalog provided insights to partner teams with metrics and guides. Updated documentation provided visibility into the overall progress and blockers.
+
+When they needed organizational advocacy, I communicated migration timelines and resource needs to leadership and coordinated with platform teams to prioritize missing capabilities. I also shared context about business risks in language that resonated with different stakeholders.
+
+### Building Trust Through Consistent Follow-Through
+
+Optimizing to be of service requires reliability to build trust. I created systems to ensure consistent follow-through:
+
+- **Transparent tracking**: All work was visible in public channels and spaces. This made it easy for partners to see progress
+- **Comprehensive documentation**: Once we were engaged, teams could self-serve instead of waiting for me
+- **Systematic follow-up**: We had regular check-ins on committed work. This enabled proactive communication about delays
+- **Shipping PRs**: I still contributed to partners' migrations either directly or through foundational work to unblock colleagues.
+
+When you consistently make people's jobs easier, they start actively reaching out instead of avoiding your requests.
+
+Success with the first partner team started a network effect. Word spread about our collaborative approach, and teams began reaching out proactively. Trust and dependability became force multipliers.
+
+## Results: When Service Builds Influence
+
+When that pre-fight test crashed APIv2, these relationships paid off:
+
+- **Critical implementations ready**: Teams had prioritized completing migrations for the highest-risk endpoints
+- **Rapid response**: Partners worked quickly to ship remaining fixes across platforms within days
+- **Coordinated effort**: Teams coordinated retry logic and fallback strategies without escalation
+
+By spring 2025, we had reduced APIv2 traffic by 90%. More importantly, teams were now adding this migration work to their roadmaps and getting it done—work they had deprioritized for years. In fact, teams began reaching out proactively about migration opportunities. What had been "throw-away work" became "stability improvements" teams now felt supported to prioritize
+
+The boxing fight became the world's biggest live sports streaming event, and a huge success for Netflix. APIv2 was no longer the risk factor it had been to the event.
+
+## The Service-Oriented Leadership Framework
+
+### 1. Start with Deep Understanding
+
+Before asking anyone to change their priorities, invest significant time understanding their situation—their specific challenges, constraints, and goals. Make this understanding visible through documentation and preparation.
+
+### 2. Lead with Solutions, Not Requests
+
+Don't show up and ask teams to simply do work—offer to help them solve problems. Create the first PR, gather the missing metrics, build the prototype. Show that you're willing to invest effort partnering alongside them.
+
+### 3. Take On Whatever Role Helps
+
+Don't maintain artificial boundaries around your role. If your partner needs technical guidance, provide it. If they need project coordination, organize it. If they need cross-functional advocacy, offer it. Let curiosity and usefulness, not job descriptions, define your contributions. This also helps develop range in your thinking and skills.
+
+### 4. Build Systems for Reliability
+
+Being of service requires consistent follow-through. Create transparent tracking and documentation. You're communicating with different layers of stakeholders. Building trust is crucial. When you say you'll do something, your partners need to have confidence it will happen.
+
+### 5. Make Success Visible
+
+When partners succeed in your collaboration, make sure that success is visible to them and others. This creates network effects where your service-oriented approach spreads to new relationships.
+
+## When Traditional Influence Fails
+
+This approach works especially well when:
+
+- You need to influence without authority across teams with competing priorities
+- Technical work requires cross-functional coordination and you can't mandate participation
+- Projects have slowed down or halted completely
+- Trust is low due to previous failed initiatives or organizational dynamics
+
+The pattern: when traditional authority-based influence closes progress, a service-first approach can open the door.
+
+## The Deeper Leadership Insight
+
+Many leaders try to build influence through:
+
+- **Expertise**: "I'm the technical expert, so you should follow my guidance"
+- **Authority**: "This is a priority from leadership, so you need to do it"
+- **Process**: "We have a plan and timeline, so let's execute it"
+
+These approaches work—until they don't. When stakes are high and trust is low, traditional influence hits a wall.
+
+The most sustainable influence comes from being of service: "I consistently make your job easier, so let's work together to solve hard problems." Take the time to invest in building relationships and understand your partners.
+
+The APIv2 migration taught me complex problems aren't always technical. They require judgment, empathy, and the flexibility to adapt to what others need. Be curious about your colleagues. Care about their success. Be willing to take on whatever role helps them achieve their goals. When you consistently make people's jobs easier, they'll choose to work with you on the hardest problems.
+
+## References
+
+1. <cite id="1">
+     Jake Piazza, "Mike Tyson, Jake Paul fight was the most-streamed sporting
+     event ever, Netflix says," [CNBC
+     Sport](https://www.cnbc.com/2024/11/19/mike-tyson-jake-paul-fight-was-most-streamed-sports-event-netflix-says.html),
+     2024
+   </cite>
