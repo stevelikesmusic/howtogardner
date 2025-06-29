@@ -1,4 +1,4 @@
-import { NewsletterSignup } from '@/components/newsletter-signup';
+import { NewsletterSection } from '@/components/NewsletterSection';
 import { getAllPosts } from '@/lib/blog';
 import { ArticleSummaryCard } from '@/components/ArticleSummaryCard';
 
@@ -38,16 +38,11 @@ export default async function BlogPage() {
         </div>
 
         {/* Newsletter Signup */}
-        <div className="rounded-lg bg-gradient-to-br from-slate-200 to-slate-100 p-8 text-center">
-          <h2 className="mb-4 text-2xl font-bold text-slate-900">
-            Never Miss an Update
-          </h2>
-          <p className="mx-auto mb-6 max-w-2xl text-slate-600">
-            Get the latest articles on technology leadership and engineering
-            best practices delivered straight to your inbox.
-          </p>
-          <NewsletterSignup />
-        </div>
+        <NewsletterSection
+          description="Get the latest articles on technology leadership and engineering best practices delivered straight to your inbox."
+          title="Never Miss an Update"
+          variant="light"
+        />
       </div>
     </div>
   );

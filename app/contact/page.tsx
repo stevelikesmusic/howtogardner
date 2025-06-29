@@ -30,20 +30,27 @@ type ContactFormData = {
 };
 
 export default function ContactPage() {
-  const { register, handleSubmit, control, reset, formState, watch, setValue } =
-    useForm<ContactFormData>({
-      defaultValues: {
-        name: '',
-        email: '',
-        company: '',
-        role: '',
-        teamSize: '',
-        timeline: '',
-        challenges: [],
-        details: '',
-        newsletter: false,
-      },
-    });
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState,
+    watch,
+    setValue,
+    getValues,
+  } = useForm<ContactFormData>({
+    defaultValues: {
+      name: '',
+      email: '',
+      company: '',
+      role: '',
+      teamSize: '',
+      timeline: '',
+      challenges: [],
+      details: '',
+      newsletter: false,
+    },
+  });
 
   const watchedChallenges = watch('challenges');
 
@@ -53,8 +60,18 @@ export default function ContactPage() {
       from_name: 'howtogardner.com Contact Form',
       subject: 'New Contact Form Submission',
     },
-    onSuccess: () => {
-      reset();
+    onSuccess: async () => {
+      if (getValues('newsletter')) {
+        await fetch('/api/newsletter-signup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email: getValues('email') }),
+        });
+      }
+
+      // reset();
     },
     onError: () => {
       alert('Error submitting form. Please try again.');

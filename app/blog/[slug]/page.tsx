@@ -1,7 +1,7 @@
 import { Calendar } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { NewsletterSignup } from '@/components/newsletter-signup';
+import { NewsletterSection } from '@/components/NewsletterSection';
 import { getAllPostSlugs } from '@/lib/blog';
 import { notFound } from 'next/navigation';
 
@@ -64,16 +64,12 @@ export default async function BlogPostPage({
         </article>
 
         {/* Newsletter Signup */}
-        <div className="mb-12 rounded-lg bg-gradient-to-br from-slate-50 to-slate-100 p-8 text-center">
-          <h2 className="mb-4 text-2xl font-bold text-slate-900">
-            Enjoyed this article?
-          </h2>
-          <p className="mb-6 text-slate-600">
-            Subscribe to get more insights on technology leadership and
-            engineering best practices.
-          </p>
-          <NewsletterSignup />
-        </div>
+        <NewsletterSection
+          className="mb-12"
+          description="Subscribe to get more insights on technology leadership and engineering best practices."
+          title="Enjoyed this article?"
+          variant="light"
+        />
       </div>
     </div>
   );
