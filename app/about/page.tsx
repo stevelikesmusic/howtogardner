@@ -22,14 +22,15 @@ export default function AboutPage() {
           <div className="prose prose-lg prose-slate lg:w-2/3">
             <h1 className="mb-6">Hi, I’m Steve 👋</h1>
             <p>
-              I’m a technology leader with a passion for developing
-              high-performing teams and innovative software products. With years
-              of experience in high profile tech companies, and success in high
-              impact roles, I specialize in product development, engineer
-              mentoring, and technical leadership. I do this with the
-              understanding that true leadership is service. I also provide
-              fractional engineering to businesses seeking to leverage
-              technology effectively.
+              I’m an engineering leader who believes the most effective way to
+              build influence is to be of genuine service to your colleagues.
+              Over the past decade at companies like Netflix and Zapier, I’ve
+              learned that complex engineering problems aren’t just
+              technical—they require empathy, adaptability, and the willingness
+              to take on whatever role helps most. As a fractional CTO, I help
+              growing companies ship faster with fewer outages by deeply
+              understanding their challenges and working alongside teams to
+              solve them, rather than mandating generic solutions.
             </p>
           </div>
         </div>

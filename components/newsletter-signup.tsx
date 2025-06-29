@@ -67,7 +67,7 @@ export function NewsletterSignup() {
           type="email"
           {...register('email', { required: 'Email is required' })}
           required
-          className="flex-1 rounded-xl border-2 border-slate-200 p-3 focus:border-slate-400 focus:ring-slate-400/10"
+          className="flex-1 rounded-xl border-2 border-slate-200 p-3"
           disabled={isSubmitting}
         />
         {errors.email && (
