@@ -16,7 +16,7 @@ export function Footer() {
             </p>
             <Link
               className="inline-block rounded-full bg-blue-600 px-8 py-4 font-semibold text-white transition-colors hover:bg-blue-700"
-              href="mailto:steve@howtogardner.com"
+              href="/contact"
             >
               Schedule a Free Assessment
             </Link>

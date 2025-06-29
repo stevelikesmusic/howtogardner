@@ -23,6 +23,15 @@ npm run dev
 - Hot reload for rapid development
 - Accessible at http://localhost:3000
 
+### Fix Linting Errors
+
+```bash
+npm run lint -- --fix
+```
+
+- Runs eslint with the fix flag
+- Use this to fix most linting errors
+
 ## Tools and Scripts Used
 
 ### Design Implementation
@@ -35,8 +44,10 @@ npm run dev
 
 ### Component Architecture
 
+Where possible create reusable components rather than long strings of JSX in page components.
+
 - **Shadcn/ui**: Base component library for cards, buttons, sheets
-- **Custom Components**: ArticleSummaryCard, Header with active state detection
+- **Custom Components**: ArticleSummaryCard, Header with active state detection.
 - **MDX Components**: Custom styling for blog article links and content
 
 ### Navigation Implementation
@@ -46,12 +57,6 @@ npm run dev
 - **Smooth Scrolling**: CSS scroll-behavior and scroll-padding-top for fixed header
 
 ## Key Technical Decisions
-
-### Fixed Header Solution
-
-- Added `pt-16` to main element in layout.tsx for global header clearance
-- Set `scroll-padding-top: 5rem` in CSS for proper anchor link behavior
-- Removed individual page padding in favor of global solution
 
 ### Gradient Implementation
 

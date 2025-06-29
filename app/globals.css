@@ -122,6 +122,10 @@
   }
 }
 
+.htg {
+  @apply bg-gradient-to-r from-indigo-400 to-violet-600 bg-clip-text text-transparent;
+}
+
 html {
   scroll-padding-top: 5rem; /* 80px to account for fixed header */
 }

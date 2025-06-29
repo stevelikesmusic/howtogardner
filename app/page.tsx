@@ -1,25 +1,24 @@
 import Link from 'next/link';
-import { CheckCircle, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { getAllPosts } from '@/lib/blog';
-import { ArticleSummaryCard } from '@/components/ArticleSummaryCard';
+import { ServiceCard } from '@/components/ServiceCard';
+import { GetStartedStep } from '@/components/GetStartedStep';
 
 export default async function HomePage() {
   const allPosts = await getAllPosts();
   const latestPost = allPosts[0];
-  const latestPosts = allPosts.slice(0, 3);
 
   return (
     <div className="flex min-h-screen flex-col">
       {/* Hero Section */}
-      <section className="bg-brand-gradient pt-16 pb-24 text-white">
+      <section className="bg-brand-gradient pt-32 pb-28 text-white">
         <div className="container mx-auto px-5">
           <div className="mx-auto max-w-4xl text-center">
             <h1 className="mb-4 text-5xl leading-tight font-bold lg:text-6xl">
-              Engineering Leadership That Adapts
+              Engineering Leadership
+              <br />
+              That Adapts
             </h1>
-            <p className="mb-6 text-2xl font-light opacity-90">
-              Fractional CTO services for growing engineering teams
-            </p>
             <p className="mx-auto mb-12 max-w-2xl text-lg opacity-80">
               I help early-stage companies build engineering culture that
               scales, reduce time-to-production, and grow remote teams that
@@ -27,7 +26,7 @@ export default async function HomePage() {
             </p>
             <Link
               className="inline-block rounded-full bg-white px-8 py-4 text-lg font-semibold text-indigo-600 transition-all hover:-translate-y-1 hover:shadow-2xl"
-              href="#contact"
+              href="/contact"
             >
               Start With a Free Assessment
             </Link>
@@ -49,103 +48,39 @@ export default async function HomePage() {
           </div>
 
           <div className="grid gap-8 md:grid-cols-1 lg:grid-cols-3">
-            {/* Service Card 1 */}
-            <div className="group rounded-2xl bg-white p-10 shadow-lg transition-all hover:-translate-y-2 hover:shadow-2xl">
-              <div className="bg-brand-gradient mb-6 flex h-15 w-15 items-center justify-center rounded-2xl text-2xl">
-                🚀
-              </div>
-              <h3 className="mb-4 text-2xl font-bold text-slate-800">
-                Building Engineering Culture That Scales
-              </h3>
-              <p className="mb-6 text-gray-600">
-                Transform your engineering organization from a group of
-                individual contributors into a cohesive team that ships with
-                confidence.
-              </p>
-              <ul className="space-y-3">
-                <li className="flex items-center text-slate-700">
-                  <CheckCircle className="mr-3 h-5 w-5 text-green-500" />
-                  Clear engineering practices and standards
-                </li>
-                <li className="flex items-center text-slate-700">
-                  <CheckCircle className="mr-3 h-5 w-5 text-green-500" />
-                  Effective code review and collaboration processes
-                </li>
-                <li className="flex items-center text-slate-700">
-                  <CheckCircle className="mr-3 h-5 w-5 text-green-500" />
-                  Sustainable on-call and incident response
-                </li>
-                <li className="flex items-center text-slate-700">
-                  <CheckCircle className="mr-3 h-5 w-5 text-green-500" />
-                  Remote-first culture that actually works
-                </li>
-              </ul>
-            </div>
-
-            {/* Service Card 2 */}
-            <div className="group rounded-2xl bg-white p-10 shadow-lg transition-all hover:-translate-y-2 hover:shadow-2xl">
-              <div className="bg-brand-gradient mb-6 flex h-15 w-15 items-center justify-center rounded-2xl text-2xl">
-                🎯
-              </div>
-              <h3 className="mb-4 text-2xl font-bold text-slate-800">
-                Reducing Time-to-Production & Technical Risk
-              </h3>
-              <p className="mb-6 text-gray-600">
-                Ship faster with fewer bugs and outages through better technical
-                planning, architecture decisions, and risk management.
-              </p>
-              <ul className="space-y-3">
-                <li className="flex items-center text-slate-700">
-                  <CheckCircle className="mr-3 h-5 w-5 text-green-500" />
-                  Streamlined deployment and testing processes
-                </li>
-                <li className="flex items-center text-slate-700">
-                  <CheckCircle className="mr-3 h-5 w-5 text-green-500" />
-                  Technical debt management strategies
-                </li>
-                <li className="flex items-center text-slate-700">
-                  <CheckCircle className="mr-3 h-5 w-5 text-green-500" />
-                  Architecture that supports growth
-                </li>
-                <li className="flex items-center text-slate-700">
-                  <CheckCircle className="mr-3 h-5 w-5 text-green-500" />
-                  Proactive monitoring and alerting
-                </li>
-              </ul>
-            </div>
-
-            {/* Service Card 3 */}
-            <div className="group rounded-2xl bg-white p-10 shadow-lg transition-all hover:-translate-y-2 hover:shadow-2xl">
-              <div className="bg-brand-gradient mb-6 flex h-15 w-15 items-center justify-center rounded-2xl text-2xl">
-                🌐
-              </div>
-              <h3 className="mb-4 text-2xl font-bold text-slate-800">
-                Growing Remote Teams That Ship
-              </h3>
-              <p className="mb-6 text-gray-600">
-                Build and scale distributed engineering teams with the hiring,
-                onboarding, and management practices that create lasting
-                success.
-              </p>
-              <ul className="space-y-3">
-                <li className="flex items-center text-slate-700">
-                  <CheckCircle className="mr-3 h-5 w-5 text-green-500" />
-                  Effective technical hiring and interviewing
-                </li>
-                <li className="flex items-center text-slate-700">
-                  <CheckCircle className="mr-3 h-5 w-5 text-green-500" />
-                  Remote onboarding that actually works
-                </li>
-                <li className="flex items-center text-slate-700">
-                  <CheckCircle className="mr-3 h-5 w-5 text-green-500" />
-                  Engineering leadership development
-                </li>
-                <li className="flex items-center text-slate-700">
-                  <CheckCircle className="mr-3 h-5 w-5 text-green-500" />
-                  Cross-functional collaboration systems
-                </li>
-              </ul>
-            </div>
+            <ServiceCard
+              description="Transform your engineering organization from a group of individual contributors into a cohesive team that ships with confidence."
+              features={[
+                'Clear engineering practices and standards',
+                'Effective code review and collaboration processes',
+                'Sustainable on-call and incident response',
+                'Remote-first culture that actually works',
+              ]}
+              icon="🚀"
+              title="Building Engineering Culture That Scales"
+            />
+            <ServiceCard
+              description="Ship faster with fewer bugs and outages through better technical planning, architecture decisions, and risk management."
+              features={[
+                'Streamlined deployment and testing processes',
+                'Technical debt management strategies',
+                'Architecture that supports growth',
+                'Proactive monitoring and alerting',
+              ]}
+              icon="🎯"
+              title="Reducing Time-to-Production & Technical Risk"
+            />
+            <ServiceCard
+              description="Build and scale distributed engineering teams with the hiring, onboarding, and management practices that create lasting success."
+              features={[
+                'Effective technical hiring and interviewing',
+                'Remote onboarding that actually works',
+                'Engineering leadership development',
+                'Cross-functional collaboration systems',
+              ]}
+              icon="🌐"
+              title="Growing Remote Teams That Ship"
+            />
           </div>
         </div>
       </section>
@@ -198,8 +133,7 @@ export default async function HomePage() {
                   they choose to work with you on complex problems.
                 </blockquote>
                 <cite className="text-sm opacity-80">
-                  From &ldquo;Service-Oriented Leadership: Lessons from
-                  Netflix&apos;s APIv2 Migration&rdquo;
+                  From &ldquo;The Service Oriented Leader&rdquo;
                 </cite>
               </div>
             </div>
@@ -220,50 +154,27 @@ export default async function HomePage() {
             </p>
           </div>
           <div className="grid gap-8 md:grid-cols-1 lg:grid-cols-3">
-            <div className="text-center">
-              <div className="bg-brand-gradient mx-auto mb-6 flex h-15 w-15 items-center justify-center rounded-full text-2xl font-bold text-white">
-                1
-              </div>
-              <h3 className="mb-4 text-2xl font-bold text-slate-800">
-                Free Technical Assessment
-              </h3>
-              <p className="text-gray-600">
-                We&apos;ll spend a week understanding your current engineering
-                practices, team dynamics, and biggest challenges. No cost, no
-                pressure.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="bg-brand-gradient mx-auto mb-6 flex h-15 w-15 items-center justify-center rounded-full text-2xl font-bold text-white">
-                2
-              </div>
-              <h3 className="mb-4 text-2xl font-bold text-slate-800">
-                Strategy Sprint (Optional)
-              </h3>
-              <p className="text-gray-600">
-                If you want to start with a specific project—hiring plan,
-                technical roadmap, culture assessment—we can deliver concrete
-                value in 2-4 weeks.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="bg-brand-gradient mx-auto mb-6 flex h-15 w-15 items-center justify-center rounded-full text-2xl font-bold text-white">
-                3
-              </div>
-              <h3 className="mb-4 text-2xl font-bold text-slate-800">
-                Fractional CTO Partnership
-              </h3>
-              <p className="text-gray-600">
-                Ongoing strategic guidance and hands-on leadership support.
-                Regular check-ins, architectural reviews, and team development.
-              </p>
-            </div>
+            <GetStartedStep
+              description="We'll spend a week understanding your current engineering practices, team dynamics, and biggest challenges. No cost, no pressure."
+              stepNumber={1}
+              title="Free Technical Assessment"
+            />
+            <GetStartedStep
+              description="If you want to start with a specific project—hiring plan, technical roadmap, culture assessment—we can deliver concrete value in 2-4 weeks."
+              stepNumber={2}
+              title="Strategy Sprint (Optional)"
+            />
+            <GetStartedStep
+              description="Ongoing strategic guidance and hands-on leadership support. Regular check-ins, architectural reviews, and team development."
+              stepNumber={3}
+              title="Fractional CTO Partnership"
+            />
           </div>
         </div>
       </section>
 
       {/* Latest Articles Section */}
-      <section className="bg-gray-50 py-24">
+      {/* <section className="bg-gray-50 py-24">
         <div className="container mx-auto px-5">
           <div className="mb-16 text-center">
             <h2 className="mb-4 text-4xl font-bold text-slate-800 lg:text-5xl">
@@ -297,7 +208,7 @@ export default async function HomePage() {
             </Link>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Featured Article */}
       <section className="bg-white py-24" id="writing">
@@ -307,15 +218,14 @@ export default async function HomePage() {
               Featured Writing
             </h2>
             <p className="mx-auto max-w-2xl text-xl text-gray-600">
-              Insights from the engineering trenches at Netflix, Zapier, and
-              beyond.
+              Insights from over ten years in the engineering trenches from
+              startups to big-tech and beyond.
             </p>
           </div>
           <div className="mx-auto max-w-4xl">
             <div className="bg-brand-gradient rounded-3xl p-12 text-center text-white">
               <h3 className="mb-4 text-3xl font-bold">
-                Service-Oriented Leadership: Lessons from Netflix&apos;s APIv2
-                Migration
+                The Service Oriented Leader
               </h3>
               <p className="mb-8 text-lg opacity-90">
                 How a service-first approach prevented a three-year stalled
@@ -323,12 +233,21 @@ export default async function HomePage() {
                 Netflix&apos;s biggest live streaming event.
               </p>
               {latestPost && (
-                <Link
-                  className="inline-block rounded-full bg-white px-8 py-4 font-semibold text-indigo-600 transition-all hover:-translate-y-1"
-                  href={`/blog/${latestPost.slug}`}
-                >
-                  Read the Full Story
-                </Link>
+                <div className="flex flex-col justify-center gap-4 sm:flex-row">
+                  <Link
+                    className="inline-block rounded-full bg-white px-8 py-4 font-semibold text-indigo-600 transition-all hover:-translate-y-1"
+                    href={`/blog/${latestPost.slug}`}
+                  >
+                    Read the Full Story
+                  </Link>
+                  <Link
+                    className="inline-flex items-center justify-center rounded-full border-2 border-white px-8 py-4 font-semibold text-white transition-all hover:-translate-y-1"
+                    href="/blog"
+                  >
+                    View All Articles
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </div>
               )}
             </div>
           </div>
