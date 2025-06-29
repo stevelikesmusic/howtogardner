@@ -1,8 +1,7 @@
-import { Calendar } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
-import { Separator } from '@/components/ui/separator';
 import { NewsletterSection } from '@/components/NewsletterSection';
+import { Separator } from '@/components/ui/separator';
 import { getAllPostSlugs } from '@/lib/blog';
+import { Calendar } from 'lucide-react';
 import { notFound } from 'next/navigation';
 
 export async function generateStaticParams() {
@@ -32,10 +31,6 @@ export default async function BlogPostPage({
       <div className="mx-auto max-w-4xl">
         {/* Article Header */}
         <header className="mb-6">
-          <div className="mb-4">
-            <Badge variant="secondary">{metadata.tags?.[0]}</Badge>
-          </div>
-
           <h1 className="mb-6 text-4xl font-bold text-slate-900 lg:text-5xl">
             {metadata.title}
           </h1>
