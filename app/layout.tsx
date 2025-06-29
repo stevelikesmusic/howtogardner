@@ -1,5 +1,6 @@
 import type React from 'react';
 import type { Metadata } from 'next';
+import { Analytics } from '@vercel/analytics/next';
 import { Roboto as Typeface } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/header';
@@ -29,6 +30,7 @@ export default function RootLayout({
       <body className={typeface.className}>
         <Header />
         <main className="pt-16">{children}</main>
+        <Analytics />
         <Footer />
       </body>
     </html>
