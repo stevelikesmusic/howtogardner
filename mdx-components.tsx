@@ -48,7 +48,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     // How to properly link?
     a: ({ href, children }) => {
       const isInternal =
-        href?.startsWith('#') || ['localhost', 'howtogardner'].includes(href);
+        href?.startsWith('#') ||
+        href?.startsWith('/') ||
+        ['localhost', 'howtogardner'].includes(href);
       const props = isInternal ? {} : { target: '_blank' };
 
       return (

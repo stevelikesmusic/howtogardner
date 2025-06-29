@@ -4,13 +4,6 @@ import type React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import useWeb3Form from '@web3forms/react';
 import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
@@ -21,33 +14,44 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { Checkbox } from '@/components/ui/checkbox';
+import { ContactInfoSection } from '@/components/ContactInfoSection';
 
 type ContactFormData = {
   name: string;
   email: string;
   company: string;
-  projectType: string;
+  role: string;
+  teamSize: string;
   timeline: string;
-  message: string;
+  challenges: string[];
+  details: string;
+  newsletter: boolean;
 };
 
 export default function ContactPage() {
-  const { register, handleSubmit, control, reset, formState } =
+  const { register, handleSubmit, control, reset, formState, watch, setValue } =
     useForm<ContactFormData>({
       defaultValues: {
         name: '',
         email: '',
         company: '',
-        projectType: '',
+        role: '',
+        teamSize: '',
         timeline: '',
-        message: '',
+        challenges: [],
+        details: '',
+        newsletter: false,
       },
     });
+
+  const watchedChallenges = watch('challenges');
+
   const { submit } = useWeb3Form({
     access_key: 'cc0ae117-bbc5-4643-8111-0bea618bb9f3',
     settings: {
       from_name: 'howtogardner.com Contact Form',
-      subject: 'New "Let’s Work" Form Submission',
+      subject: 'New Contact Form Submission',
     },
     onSuccess: () => {
       reset();
@@ -57,171 +61,304 @@ export default function ContactPage() {
     },
   });
 
+  const handleChallengeChange = (challenge: string, checked: boolean) => {
+    const currentChallenges = watchedChallenges || [];
+    if (checked) {
+      setValue('challenges', [...currentChallenges, challenge]);
+    } else {
+      setValue(
+        'challenges',
+        currentChallenges.filter((c) => c !== challenge),
+      );
+    }
+  };
+
+  const challengeOptions = [
+    { value: 'scaling', label: 'Scaling engineering team' },
+    { value: 'technical-debt', label: 'Technical debt management' },
+    { value: 'deployment', label: 'Slow deployment cycles' },
+    { value: 'culture', label: 'Engineering culture issues' },
+    { value: 'hiring', label: 'Hiring & onboarding' },
+    { value: 'remote', label: 'Remote team coordination' },
+    { value: 'architecture', label: 'System architecture' },
+    { value: 'leadership', label: 'Engineering leadership' },
+  ];
+
   return (
-    <section className="container mx-auto px-4 py-12">
-      <div className="mx-auto max-w-6xl">
-        {/* Hero Section */}
-        <div className="mb-16 text-center">
-          <h1 className="mb-6 text-4xl font-bold text-slate-900 lg:text-5xl">
-            Let’s Work Together
-          </h1>
-          <p className="mx-auto max-w-2xl text-xl text-slate-600">
-            Ready to scale your technology and build a high-performing
-            engineering team? Looking for coaching to get that next job?
-          </p>
-          <br />
-          <p className="mx-auto max-w-2xl text-xl text-slate-600">
-            Let’s discuss how I can help accelerate your business growth or
-            career.
-          </p>
-        </div>
-        <div className="mb-12 flex justify-center">
-          <div className="center">
-            <Card className="border-slate-200">
-              {formState.isSubmitSuccessful ? (
-                <>
-                  <CardHeader>
-                    <h2 className="mb-4 text-2xl font-semibold text-green-700">
-                      Thank you for reaching out!
-                    </h2>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="mb-2 text-lg text-slate-700">
-                      Your message has been received. I look forward to
-                      connecting with you soon.
-                    </p>
-                  </CardContent>
-                </>
-              ) : (
-                <>
-                  <CardHeader>
-                    <CardTitle>Start a Conversation</CardTitle>
-                    <CardDescription>
-                      Tell me about your project and I’ll get back to you within
-                      24 hours.
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <form className="space-y-6" onSubmit={handleSubmit(submit)}>
-                      <div className="grid gap-4 md:grid-cols-2">
-                        <div className="space-y-2">
-                          <Label htmlFor="name">Full Name *</Label>
-                          <Input
-                            id="name"
-                            {...register('name', { required: true })}
-                            required
-                          />
-                        </div>
-                        <div className="space-y-2">
-                          <Label htmlFor="email">Email Address *</Label>
-                          <Input
-                            id="email"
-                            type="email"
-                            {...register('email', { required: true })}
-                            required
-                          />
-                        </div>
-                      </div>
+    <section className="flex min-h-screen items-center justify-center bg-gray-50 p-4 md:p-16">
+      <div className="w-full max-w-6xl overflow-hidden rounded-3xl bg-white shadow-2xl">
+        <div className="grid min-h-[600px] md:grid-cols-2">
+          {/* Contact Info Section */}
+          <ContactInfoSection className="rounded-l-3xl" />
 
-                      <div className="space-y-2">
-                        <Label htmlFor="company">Company Name</Label>
-                        <Input id="company" {...register('company')} />
-                      </div>
+          {/* Contact Form Section */}
+          <div className="flex flex-col justify-center p-8 md:p-12">
+            {formState.isSubmitSuccessful ? (
+              <div className="text-center">
+                <h2 className="mb-4 text-3xl font-bold text-slate-800">
+                  Thank you for reaching out!
+                </h2>
+                <p className="text-lg text-slate-600">
+                  Your message has been received. I look forward to connecting
+                  with you soon.
+                </p>
+              </div>
+            ) : (
+              <>
+                <div className="mb-8">
+                  <h2 className="mb-2 text-2xl font-bold text-slate-800">
+                    Tell Me About Your Situation
+                  </h2>
+                  <p className="text-slate-600">
+                    I&apos;ll get back to you with thoughtful questions, not a
+                    sales pitch.
+                  </p>
+                </div>
 
-                      <div className="grid gap-4 md:grid-cols-2">
-                        <div className="space-y-2">
-                          <Label htmlFor="projectType">Project Type</Label>
-                          <Controller
-                            control={control}
-                            name="projectType"
-                            render={({ field }) => (
-                              <Select
-                                value={field.value}
-                                onValueChange={field.onChange}
-                              >
-                                <SelectTrigger>
-                                  <SelectValue placeholder="Select project type" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                  <SelectItem value="fractional-cto">
-                                    Fractional CTO Services
-                                  </SelectItem>
-                                  <SelectItem value="architecture-review">
-                                    Architecture Review
-                                  </SelectItem>
-                                  <SelectItem value="team-building">
-                                    Team Building & Hiring
-                                  </SelectItem>
-                                  <SelectItem value="technology-audit">
-                                    Technology Audit
-                                  </SelectItem>
-                                  <SelectItem value="strategic-consulting">
-                                    Strategic Consulting
-                                  </SelectItem>
-                                  <SelectItem value="other">Other</SelectItem>
-                                </SelectContent>
-                              </Select>
-                            )}
-                          />
-                        </div>
-                        <div className="space-y-2">
-                          <Label htmlFor="timeline">Project Timeline</Label>
-                          <Controller
-                            control={control}
-                            name="timeline"
-                            render={({ field }) => (
-                              <Select
-                                value={field.value}
-                                onValueChange={field.onChange}
-                              >
-                                <SelectTrigger>
-                                  <SelectValue placeholder="Select timeline" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                  <SelectItem value="asap">ASAP</SelectItem>
-                                  <SelectItem value="1-month">
-                                    Within 1 month
-                                  </SelectItem>
-                                  <SelectItem value="3-months">
-                                    Within 3 months
-                                  </SelectItem>
-                                  <SelectItem value="6-months">
-                                    Within 6 months
-                                  </SelectItem>
-                                  <SelectItem value="flexible">
-                                    Flexible
-                                  </SelectItem>
-                                </SelectContent>
-                              </Select>
-                            )}
-                          />
-                        </div>
-                      </div>
-
-                      <div className="space-y-2">
-                        <Label htmlFor="message">Details *</Label>
-                        <Textarea
-                          className="h-40"
-                          id="message"
-                          {...register('message', { required: true })}
-                          required
-                          placeholder="Tell me about your project, current challenges, and/or what you're looking to achieve..."
-                          rows={6}
-                        />
-                      </div>
-
-                      <Button
-                        className="w-full cursor-pointer"
-                        size="lg"
-                        type="submit"
+                <form
+                  className="space-y-6 pb-16"
+                  onSubmit={handleSubmit(submit)}
+                >
+                  {/* Name and Email Row */}
+                  <div className="grid gap-4 md:grid-cols-2">
+                    <div className="space-y-2">
+                      <Label
+                        className="text-sm font-semibold text-slate-700"
+                        htmlFor="name"
                       >
-                        Send Message
-                      </Button>
-                    </form>
-                  </CardContent>
-                </>
-              )}
-            </Card>
+                        Your Name *
+                      </Label>
+                      <Input
+                        id="name"
+                        {...register('name', { required: true })}
+                        required
+                        className="rounded-xl border-2 border-slate-200 p-3 focus:border-blue-500 focus:ring-blue-500/10"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label
+                        className="text-sm font-semibold text-slate-700"
+                        htmlFor="email"
+                      >
+                        Email Address *
+                      </Label>
+                      <Input
+                        id="email"
+                        type="email"
+                        {...register('email', { required: true })}
+                        required
+                        className="rounded-xl border-2 border-slate-200 p-3 focus:border-blue-500 focus:ring-blue-500/10"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Company and Role Row */}
+                  <div className="grid gap-4 md:grid-cols-2">
+                    <div className="space-y-2">
+                      <Label
+                        className="text-sm font-semibold text-slate-700"
+                        htmlFor="company"
+                      >
+                        Company Name
+                      </Label>
+                      <Input
+                        id="company"
+                        {...register('company')}
+                        className="rounded-xl border-2 border-slate-200 p-3 focus:border-blue-500 focus:ring-blue-500/10"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label
+                        className="text-sm font-semibold text-slate-700"
+                        htmlFor="role"
+                      >
+                        Your Role
+                      </Label>
+                      <Controller
+                        control={control}
+                        name="role"
+                        render={({ field }) => (
+                          <Select
+                            value={field.value}
+                            onValueChange={field.onChange}
+                          >
+                            <SelectTrigger className="rounded-xl border-2 border-slate-200 p-3 focus:border-blue-500">
+                              <SelectValue placeholder="Select your role" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="ceo">CEO/Founder</SelectItem>
+                              <SelectItem value="cto">CTO</SelectItem>
+                              <SelectItem value="vp-engineering">
+                                VP Engineering
+                              </SelectItem>
+                              <SelectItem value="engineering-manager">
+                                Engineering Manager
+                              </SelectItem>
+                              <SelectItem value="product-manager">
+                                Product Manager
+                              </SelectItem>
+                              <SelectItem value="other">Other</SelectItem>
+                            </SelectContent>
+                          </Select>
+                        )}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Team Size and Timeline Row */}
+                  <div className="grid gap-4 md:grid-cols-2">
+                    <div className="space-y-2">
+                      <Label
+                        className="text-sm font-semibold text-slate-700"
+                        htmlFor="teamSize"
+                      >
+                        Engineering Team Size
+                      </Label>
+                      <Controller
+                        control={control}
+                        name="teamSize"
+                        render={({ field }) => (
+                          <Select
+                            value={field.value}
+                            onValueChange={field.onChange}
+                          >
+                            <SelectTrigger className="rounded-xl border-2 border-slate-200 p-3 focus:border-blue-500">
+                              <SelectValue placeholder="Select team size" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="1-5">1-5 engineers</SelectItem>
+                              <SelectItem value="6-15">
+                                6-15 engineers
+                              </SelectItem>
+                              <SelectItem value="16-30">
+                                16-30 engineers
+                              </SelectItem>
+                              <SelectItem value="31-50">
+                                31-50 engineers
+                              </SelectItem>
+                              <SelectItem value="50+">50+ engineers</SelectItem>
+                            </SelectContent>
+                          </Select>
+                        )}
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label
+                        className="text-sm font-semibold text-slate-700"
+                        htmlFor="timeline"
+                      >
+                        Preferred Timeline
+                      </Label>
+                      <Controller
+                        control={control}
+                        name="timeline"
+                        render={({ field }) => (
+                          <Select
+                            value={field.value}
+                            onValueChange={field.onChange}
+                          >
+                            <SelectTrigger className="rounded-xl border-2 border-slate-200 p-3 focus:border-blue-500">
+                              <SelectValue placeholder="Select timeline" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="asap">
+                                ASAP - Urgent need
+                              </SelectItem>
+                              <SelectItem value="2-4-weeks">
+                                Next 2-4 weeks
+                              </SelectItem>
+                              <SelectItem value="1-2-months">
+                                1-2 months
+                              </SelectItem>
+                              <SelectItem value="3-6-months">
+                                3-6 months
+                              </SelectItem>
+                              <SelectItem value="exploring">
+                                Just exploring
+                              </SelectItem>
+                            </SelectContent>
+                          </Select>
+                        )}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Challenges Checkboxes */}
+                  <div className="space-y-3">
+                    <Label className="text-sm font-semibold text-slate-700">
+                      What challenges are you facing? (Check all that apply)
+                    </Label>
+                    <div className="grid gap-2 md:grid-cols-2">
+                      {challengeOptions.map((challenge) => (
+                        <Checkbox
+                          key={challenge.value}
+                          checked={
+                            watchedChallenges?.includes(challenge.value) ||
+                            false
+                          }
+                          className="text-sm text-slate-600"
+                          id={challenge.value}
+                          onChange={(checked) =>
+                            handleChallengeChange(challenge.value, checked)
+                          }
+                        >
+                          {challenge.label}
+                        </Checkbox>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Details Textarea */}
+                  <div className="space-y-2">
+                    <Label
+                      className="text-sm font-semibold text-slate-700"
+                      htmlFor="details"
+                    >
+                      Tell me more about your situation *
+                    </Label>
+                    <Textarea
+                      id="details"
+                      {...register('details', { required: true })}
+                      required
+                      className="min-h-[120px] resize-y rounded-xl border-2 border-slate-200 p-3 focus:border-blue-500 focus:ring-blue-500/10"
+                      placeholder="What's your biggest engineering challenge right now? What would success look like for you? Any specific context about your team, product, or business that would be helpful to know?"
+                    />
+                  </div>
+
+                  {/* Newsletter Signup */}
+                  <div className="border-t border-slate-200 pt-6">
+                    <Controller
+                      control={control}
+                      name="newsletter"
+                      render={({ field }) => (
+                        <Checkbox
+                          checked={field.value}
+                          className="font-semibold text-slate-800"
+                          id="newsletter"
+                          onChange={field.onChange}
+                        >
+                          Yes, send me engineering leadership insights
+                        </Checkbox>
+                      )}
+                    />
+                    <p className="mt-1 ml-6 text-sm text-slate-500">
+                      Get practical advice on building engineering teams, twice
+                      monthly. Unsubscribe anytime.
+                    </p>
+                  </div>
+
+                  <Button
+                    className="bg-brand-gradient w-full rounded-full py-6 text-lg font-semibold text-white transition-all hover:-translate-y-1 hover:opacity-90 hover:shadow-lg disabled:transform-none disabled:cursor-not-allowed disabled:opacity-70"
+                    disabled={formState.isSubmitting}
+                    type="submit"
+                  >
+                    {formState.isSubmitting
+                      ? 'Sending...'
+                      : 'Start the Conversation'}
+                  </Button>
+                </form>
+              </>
+            )}
           </div>
         </div>
       </div>
