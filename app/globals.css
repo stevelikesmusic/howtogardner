@@ -154,3 +154,12 @@ html {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+@utility prose {
+  code {
+    &::before,
+    &::after {
+      content: none;
+    }
+  }
+}
